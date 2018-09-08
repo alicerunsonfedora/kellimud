@@ -32,7 +32,7 @@ public class Dungeon {
 	 */
 	public void spawnPlayer()
 	{
-		playerLocation = chrysalisSE.nextInt(9);
+		playerLocation = 0;
 	}
 
 	/**
