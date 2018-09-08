@@ -6,7 +6,8 @@ import java.util.ArrayList;
  */
 public class Dungeon {
 	private ArrayList<Integer> rooms;
-
+	private int playerLocation;
+	private int[] mobLocations;
 	/**
 	 * Instantiate the object
 	 */
