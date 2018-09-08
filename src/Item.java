@@ -1,8 +1,11 @@
 
 public class Item {
-
-	public Item() {
-		// TODO Auto-generated constructor stub
+	private String name;
+	private String type;
+	public Item(String aname, String atype) 
+	{
+		name = aname;
+		type = atype;
 	}
 
 }
