@@ -7,7 +7,7 @@ import java.util.Random;
  * @author Marquis Kurt
  */
 public class Dungeon {
-	private ArrayList<Integer> rooms;
+	private int[] rooms = new int[9];
 	private int playerLocation;
 	private int[] mobLocations;
 	private Random chrysalisSE;

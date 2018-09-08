@@ -9,7 +9,7 @@ public class Room {
 	private int ID;
 	private ArrayList<Item> loot;
 	private Boolean monsterInRoom;
-	private int[] doors;
+	private Boolean[] doors = new Boolean[4];
 
 	/**
 	 * Instantiate the object
