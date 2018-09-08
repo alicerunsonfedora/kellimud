@@ -18,4 +18,20 @@ public class Room {
 		// TODO Auto-generated constructor stub
 	}
 
+	/**
+	 * Inserts a mob into the room
+	 */
+	public void insertMob()
+	{
+
+	}
+
+	/**
+	 * Removes a mob from the room
+	 */
+	public void removeMob()
+	{
+
+	}
+
 }
