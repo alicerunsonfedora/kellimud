@@ -6,7 +6,10 @@ public class Player {
 	private Item hand,armor;
 	private Item[] backpack = new Item[10];
 	private int flag;
-	
+	/*
+	 * flag is a pointer that shows the last position of the backpack that is empty
+	 * 
+	 */
 	public Player(String aname,String aclass) 
 	{
 		name = aname;
@@ -28,7 +31,9 @@ public class Player {
 	{
 		int i;
 		Item temp;
-		
+		/*
+		 * finditem takes a name and returns the Item with the specific name
+		 */
 		if (action.equals("pick up"))
 		{
 			backpack[flag] = finditem(item);
@@ -36,6 +41,9 @@ public class Player {
 		
 		if (action.equals("drop"))
 		{
+			/*
+			 * this for loop finds the item in the backpack and switches it with the last item and then sets last item to null
+			 */
 			for(i=0;i<10;i++)
 			{
 				if(backpack[i].name.equals(item))
@@ -48,7 +56,9 @@ public class Player {
 				}
 			}
 		}
-		
+		/*
+		 * returns correct answer picked up or dropped
+		 */
 		if(action.equals("pick up"))
 		{
 			return "You picked up " + item;
