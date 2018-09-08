@@ -2,8 +2,10 @@
 public class Item {
 	private String name;
 	private String type;
-	public Item() {
-		// TODO Auto-generated constructor stub
+	public Item(String aname, String atype) 
+	{
+		name = aname;
+		type = atype;
 	}
 
 }
