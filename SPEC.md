@@ -12,3 +12,6 @@ The player spawns in the dungeon (a 3 x 3 grid) and placed in the upper left-han
 - `Dungeon`
 - `Room`
 - `Mob`
+
+### Class interactions
+![Spec](projectmud_1.0.0.png)
