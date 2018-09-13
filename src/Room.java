@@ -13,8 +13,8 @@ public class Room {
 	/**
 	 * Instantiate the object
 	 */
-	public Room() {
-		// TODO Auto-generated constructor stub
+	public Room(int RoomNumber, int MobLevel) {
+		ID = RoomNumber;
 	}
 
 	/**

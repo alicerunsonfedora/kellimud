@@ -7,6 +7,34 @@ public class TheGame {
 
 	public static void main(String[] args)
 	{
+		int i;
+		Player player = new Player("FilthyCStudent","noob");
+		Room room0 = new Room(0,1);
+		Room room1 = new Room(1,1);
+		Room room2 = new Room(2,1);
+		Room room3 = new Room(3,1);
+		Room room4 = new Room(4,1);
+		Room room5 = new Room(5,1);
+		Room room6 = new Room(6,1);
+		Room room7 = new Room(7,1);
+		Room room8 = new Room(8,1);
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		boolean ExitFlag = false;
         Scanner in = new Scanner(System.in);
 		while(true)
@@ -35,28 +63,6 @@ public class TheGame {
 			
 			else if(input.equals("exit"))
 			{
-				System.out.println("Are you sure you want to close the game?");
-				
-				while(true)
-				{
-					input = in.nextLine();
-					if(input.equals("yes"))
-					{
-						System.out.println("Game is closing");
-						ExitFlag = true;
-						break;
-					}
-					else if(input.equals("no"))
-					{
-						System.out.println("DECIDE DUDEEE,wanna play or not?");
-						System.out.println("I mean... Game resuming");
-						break;
-					}
-					else
-					{
-						System.out.println("yes or no?");
-					}
-				}
 			}
 			else
 			{
