@@ -29,9 +29,10 @@ public class Dungeon {
 	/**
 	 * Spawns the player into a random location.
 	 */
-	public void spawnPlayer()
+	public String spawnPlayer()
 	{
 		playerLocation = 0;
+		return "Player spawned in successfully?";
 	}
 
 	/**
@@ -46,9 +47,10 @@ public class Dungeon {
 	/**
 	 * Spawns the mob into a random location.
 	 */
-	public void spawnMobs()
+	public String spawnMobs()
 	{
 		mobLocations[0] = chrysalisSE.nextInt(9);
+		return "Mobs definitely spawned successfully.";
 	}
 
 }

@@ -20,17 +20,17 @@ public class Room {
 	/**
 	 * Inserts a mob into the room
 	 */
-	public void insertMob()
+	public String insertMob()
 	{
-
+		return "The mobs are here.";
 	}
 
 	/**
 	 * Removes a mob from the room
 	 */
-	public void removeMob()
+	public String removeMob()
 	{
-
+		return "Mob be gone!";
 	}
 
 }

@@ -69,19 +69,19 @@ public class Player {
 		}
 	}
 	
-	public void attack()
+	public String attack()
 	{
-		
+		return "You attacked!";
 	}
 	
-	public void exit()
+	public String exit()
 	{
-		
+		return "Goodbye.";
 	}
 	
-	public void move()
+	public String move()
 	{
-		
+		return "Great, you moved in an arbitrary direction.";
 	}
 	
 
