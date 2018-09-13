@@ -1,6 +1,6 @@
-
+import java.util.Scanner;
 public class Player {
-	
+    Scanner in = new Scanner(System.in);
 	private String name,playerclass;
 	private int lvl,health,attack,defense,exp;
 	private Item hand,armor;
@@ -36,7 +36,7 @@ public class Player {
 		 */
 		if (action.equals("pick up"))
 		{
-			backpack[flag] = finditem(item);
+//			backpack[flag] = finditem(item);
 		}
 		
 		if (action.equals("drop"))
@@ -74,9 +74,29 @@ public class Player {
 		return "You attacked!";
 	}
 	
-	public String exit()
+	public boolean exit()
 	{
-		return "Goodbye.";
+		System.out.println("Are you sure you want to close the game?");
+		
+		while(true)
+		{
+			String input = in.nextLine();
+			if(input.equals("yes"))
+			{
+				System.out.println("Game is closing");
+				return true;
+			}
+			else if(input.equals("no"))
+			{
+				System.out.println("DECIDE DUDEEE,wanna play or not?");
+				System.out.println("I mean... Game resuming");
+				return false;
+			}
+			else
+			{
+				System.out.println("yes or no?");
+			}
+		}
 	}
 	
 	public String move()

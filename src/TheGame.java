@@ -1,6 +1,5 @@
 import java.util.Scanner;  
 public class TheGame {
-
 	public TheGame() {
 	
 	}
@@ -19,6 +18,17 @@ public class TheGame {
 		Room room7 = new Room(7,1);
 		Room room8 = new Room(8,1);
 		
+		Room[] thisDick = new Room[9];
+		thisDick[0] = room0;
+		thisDick[1] = room1;
+		thisDick[2] = room2;
+		thisDick[3] = room3;
+		thisDick[4] = room4;
+		thisDick[5] = room5;
+		thisDick[6] = room6;
+		thisDick[7] = room7;
+		thisDick[8] = room8;
+		Dungeon TheDungeon = new Dungeon(thisDick);
 		
 		
 		
@@ -35,10 +45,12 @@ public class TheGame {
 		
 		
 		
-		boolean ExitFlag = false;
+		
+
         Scanner in = new Scanner(System.in);
 		while(true)
 		{
+			boolean ExitFlag = false;
 			String input = in.nextLine();
 			
 			if(input.equals("pick up"))
@@ -63,6 +75,11 @@ public class TheGame {
 			
 			else if(input.equals("exit"))
 			{
+				ExitFlag = player.exit();
+				if(ExitFlag==true)
+				{
+					break;
+				}
 			}
 			else
 			{
