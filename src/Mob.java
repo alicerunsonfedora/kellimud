@@ -11,18 +11,29 @@ public class Mob {
 		defense = lvl;
 	}
 	
-	public void attack()
+	public String attack()
 	{
-		
+		return "The mob has attacked.";
 	}
 	
-	public void die()
+	public String die()
 	{
-		
+		return "The mob died!";
 	}
 	
-	public void move()
+	public String move()
 	{
-		
+		return "The mob moved in a particular direction.";
 	}
 }
+
+/*
+ _________________________________________
+< Excuse me, what the fuck are you doing? >
+ -----------------------------------------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+ */
