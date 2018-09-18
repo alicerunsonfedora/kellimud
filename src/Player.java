@@ -46,7 +46,7 @@ public class Player {
 			 */
 			for(i=0;i<10;i++)
 			{
-				if(backpack[i].name.equalsIgnoreCase(item))
+				if(backpack[i].name().equalsIgnoreCase(item))
 				{
 					temp = backpack[i];
 					backpack[i] = backpack[flag-1];
