@@ -1,7 +1,5 @@
 public class Armor extends Item {
-    private String name = "Armor";
-    private String type = "defense";
-
+    
     /**
      * Instantiate the Armor object from Item.
      */
@@ -9,6 +7,7 @@ public class Armor extends Item {
     private int level;
     public Armor( int itemlevel)
     {
+        super("Armor", "defense");
     	level = itemlevel;
     	defense = level;
     }
