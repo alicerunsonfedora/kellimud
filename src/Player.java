@@ -34,12 +34,12 @@ public class Player {
 		/*
 		 * finditem takes a name and returns the Item with the specific name
 		 */
-		if (action.equals("pick up"))
+		if (action.equalsIgnoreCase("pick up"))
 		{
 //			backpack[flag] = finditem(item);
 		}
 		
-		if (action.equals("drop"))
+		if (action.equalsIgnoreCase("drop"))
 		{
 			/*
 			 * this for loop finds the item in the backpack and switches it with the last item and then sets last item to null
@@ -59,7 +59,7 @@ public class Player {
 		/*
 		 * returns correct answer picked up or dropped
 		 */
-		if(action.equals("pick up"))
+		if(action.equalsIgnoreCase("pick up"))
 		{
 			return "You picked up " + item;
 		}
@@ -81,12 +81,12 @@ public class Player {
 		while(true)
 		{
 			String input = in.nextLine();
-			if(input.equals("yes"))
+			if(input.equalsIgnoreCase("yes"))
 			{
 				System.out.println("Game is closing");
 				return true;
 			}
-			else if(input.equals("no"))
+			else if(input.equalsIgnoreCase("no"))
 			{
 				System.out.println("DECIDE DUDEEE,wanna play or not?");
 				System.out.println("I mean... Game resuming");
@@ -106,7 +106,7 @@ public class Player {
 	
 	public String equip( Item item)
 	{
-		if(item.type().equals("Sword"))
+		if(item.type().equalsIgnoreCase("Sword"))
 		{
 			hand = item;
 		}

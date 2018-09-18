@@ -27,3 +27,14 @@ For a detailed understanding of the project's objectives and basic gameplay, ple
 ##### Eclipse
 1. Go to 'File > Export' and select 'Java > Runnable JAR file'.
 2. Ensure that the option 'Package required libraries into generated JAR' is selected. Follow all other prompts.
+
+## Commit conduct
+- Branches must be merged via a pull request before deletion.
+> From Stack Overflow:
+> Avoid long descriptive names
+>
+> Long branch names can be very helpful when you are looking at a list of branches. But it can get in the way when looking at decorated one-line logs as the branch names can eat up most of the single line and abbreviate the visible part of the log.
+>
+> On the other hand long branch names can be more helpful in "merge commits" if you do not habitually rewrite them by hand. The default merge commit message is Merge branch 'branch-name'. You may find it more helpful to have merge messages show up as Merge branch 'fix/CR15032/crash-when-unformatted-disk-inserted' instead of just Merge branch 'fix/CR15032'.
+
+**Pull requests will be denied if branches don't follow this practice.**
