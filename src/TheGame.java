@@ -50,32 +50,32 @@ public class TheGame {
 			boolean ExitFlag = false;
 			String input = in.nextLine();
 			
-			if(input.equals("pick up"))
+			if(input.equalsIgnoreCase("pick up"))
 			{
 				System.out.println("What item do you want to pick up?");
 			}
 			
-			else if (input.equals("drop"))
+			else if (input.equalsIgnoreCase("drop"))
 			{
 				System.out.println("What item do you want to drop?");
 			}
 			
-			else if (input.equals("equip"))
+			else if (input.equalsIgnoreCase("equip"))
 			{
 				System.out.println("What item do you want to equip?");
 			}
 			
-			else if(input.equals("attack"))
+			else if(input.equalsIgnoreCase("attack"))
 			{
 				System.out.println("");
 			}
 			
-			else if(input.equals("move"))
+			else if(input.equalsIgnoreCase("move"))
 			{
 				System.out.println("What direction do you want to move to?");
 			}
 			
-			else if(input.equals("exit"))
+			else if(input.equalsIgnoreCase("exit"))
 			{
 				ExitFlag = player.exit();
 				if(ExitFlag==true)
