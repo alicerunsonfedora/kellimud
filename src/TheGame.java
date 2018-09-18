@@ -6,34 +6,31 @@ public class TheGame {
 
 	public static void main(String[] args)
 	{
-		int i;
 		Player player = new Player("FilthyCStudent","noob");
-		Room room0 = new Room(0,1);
-		Room room1 = new Room(1,1);
-		Room room2 = new Room(2,1);
-		Room room3 = new Room(3,1);
-		Room room4 = new Room(4,1);
-		Room room5 = new Room(5,1);
-		Room room6 = new Room(6,1);
-		Room room7 = new Room(7,1);
-		Room room8 = new Room(8,1);
 		
 		Room[] thisDick = new Room[9];
-		thisDick[0] = room0;
-		thisDick[1] = room1;
-		thisDick[2] = room2;
-		thisDick[3] = room3;
-		thisDick[4] = room4;
-		thisDick[5] = room5;
-		thisDick[6] = room6;
-		thisDick[7] = room7;
-		thisDick[8] = room8;
+		thisDick[0] = new Room(player,0,1);
+		thisDick[1] = new Room(player,1,1);
+		thisDick[2] = new Room(player,2,1);
+		thisDick[3] = new Room(player,3,1);
+		thisDick[4] = new Room(player,4,1);
+		thisDick[5] = new Room(player,5,1);
+		thisDick[6] = new Room(player,6,1);
+		thisDick[7] = new Room(player,7,1);
+		thisDick[8] = new Room(player,8,1);
 		Dungeon TheDungeon = new Dungeon(thisDick);
 		
-		
-		
-		
-		
+		System.out.println("Tom : Hello Stranger");
+		System.out.println("Tom : My name is Tom Kelliher");
+		System.out.println("Tom : WAIT WHAT???");
+		System.out.println("Tom : IS THAT 42 CHOCOLATE BARS???");
+		System.out.println("Tom : I'm out of here noob, good luck");
+		System.out.println("...");
+		System.out.println("Announcer : Little did Tom know, those bars had stupid CS students in them...");
+		System.out.println("Announcer : Tom's only weakness");
+		System.out.println("Announcer : After eating all 42 of them, he transoformed into the MAD TOM");
+		System.out.println("Announcer : You are in a dungeon, your job is to find MAD TOM and end his suffering");
+		System.out.println("Announcer : Good Luck, Adventurer");
 		
 		
 		
@@ -93,5 +90,6 @@ public class TheGame {
 		}
 
 	}
+	
 
 }

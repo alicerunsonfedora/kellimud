@@ -104,5 +104,58 @@ public class Player {
 		return "Great, you moved in an arbitrary direction.";
 	}
 	
+	public String equip( Item item)
+	{
+		if(item.type().equals("Sword"))
+		{
+			hand = item;
+		}
+		else
+		{
+			armor = item;
+		}
+		
+		return "You just equiped" + item.name();
+	}
+	
+	public String hand()
+	{
+		return hand.name();
+	}
+	
+	public String armor()
+	{
+		return armor.name();
+	}
+	
+	public int exp()
+	{
+		return exp;
+	}
+	
+	public int health()
+	{
+		return health;
+	}
+	
+	public int defense()
+	{
+		return defense;
+	}
+	
+	public int level()
+	{
+		return lvl;
+	}
+	
+	public String name()
+	{
+		return name;
+	}
+	
+	public String playerclass()
+	{
+		return playerclass;
+	}
 
 }

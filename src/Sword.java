@@ -9,8 +9,11 @@ public class Sword extends Item {
     /**
      * Instantiate the Sword object from Item.
      */
-    public Sword()
+    private int attack;
+    private int level;
+    public Sword( int itemlevel)
     {
-
+    	level = itemlevel;
+    	attack = level;
     }
 }
