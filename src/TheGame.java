@@ -60,6 +60,10 @@ public class TheGame {
 				System.out.println("What item do you want to drop?");
 			}
 			
+			else if (input.equals("equip"))
+			{
+				System.out.println("What item do you want to equip?");
+			}
 			else if(input.equals("attack"))
 			{
 				System.out.println("");
