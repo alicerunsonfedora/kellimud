@@ -6,15 +6,16 @@ import java.util.Random;
  * @author Marquis Kurt
  */
 public class Dungeon {
-	private int[] rooms = new int[9];
+	private Room[] rooms = new Room[9];
 	private int playerLocation;
 	private int[] mobLocations;
 	private Random chrysalisSE;
 	/**
 	 * Instantiate the object
 	 */
-	public Dungeon() {
-
+	public Dungeon(Room[] RoomArray) 
+	{
+		rooms = RoomArray;
 	}
 
 	/**
