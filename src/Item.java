@@ -7,5 +7,15 @@ public class Item {
 		name = aname;
 		type = atype;
 	}
+	
+	public String name()
+	{
+		return name;
+	}
+	
+	public String type()
+	{
+		return type;
+	}
 
 }

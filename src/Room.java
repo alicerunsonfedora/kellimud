@@ -6,15 +6,25 @@ import java.util.Random;
  */
 public class Room {
 	private int ID;
-	private int[] loot;
+	private Item loot;
 	private Boolean monsterInRoom;
 	private Boolean[] doors = new Boolean[4];
-
+	Random rand = new Random();
 	/**
 	 * Instantiate the object
 	 */
-	public Room(int RoomNumber, int MobLevel) {
+	public Room(Player player,int RoomNumber, int MobLevel) {
 		ID = RoomNumber;
+		Mob mob = new Mob(MobLevel);
+		int  n = rand.nextInt(2) + 1;
+		if(n==1)
+		{
+			loot = new Sword(player.level() + 1);
+		}
+		else
+		{
+			loot = new Armor(player.level() + 1);
+		}
 	}
 
 	/**
