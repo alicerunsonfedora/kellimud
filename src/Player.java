@@ -73,6 +73,30 @@ public class Player {
 	{
 		return "You attacked!";
 	}
+
+	public int takeDamage(int amount)
+	{
+		this.health -= amount;
+		if (this.health <= 0)
+		{
+			this.die();
+			return 0;
+		}
+		else
+		{
+			return health;
+		}
+	}
+
+	public int healHealth(int amount)
+	{
+		this.health += amount;
+		if (this.health >= 42)
+		{
+			this.health = 42;
+		}
+		return health;
+	}
 	
 	public boolean exit()
 	{
