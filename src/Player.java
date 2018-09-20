@@ -1,4 +1,6 @@
 import java.util.Scanner;
+import static java.lang.System.out;
+
 public class Player {
     Scanner in = new Scanner(System.in);
 	private String name,playerclass;
@@ -100,14 +102,14 @@ public class Player {
 	
 	public boolean exit()
 	{
-		System.out.println("Are you sure you want to close the game?");
+		out.println("Are you sure you want to close the game?");
 		
 		while(true)
 		{
 			String input = in.nextLine();
 			if(input.equalsIgnoreCase("yes"))
 			{
-				System.out.println("Game is closing");
+				System.out.println("Goodbye.");
 				return true;
 			}
 			else if(input.equalsIgnoreCase("no"))
