@@ -77,7 +77,15 @@ public class TheGame {
 			{
 				out.println(narrator.say("What item do you want to pick up?"));
 				input = in.nextLine();
-				System.out.println(player.manage_inventory("pick up", input,TheDungeon));
+				if (input.equals(""))
+				{
+					out.println(narrator.say("Ah, got it. Stop picking up air, you weirdo."));
+				}
+				else
+				{
+					System.out.println(player.manage_inventory("pick up", input,TheDungeon));
+				}
+				
 			}
 			
 			else if (input.equalsIgnoreCase("drop"))
