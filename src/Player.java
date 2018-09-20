@@ -29,16 +29,24 @@ public class Player {
 		
 	}
 	
-	public String manage_inventory(String action,String item)
+	public String manage_inventory(String action,String item,Dungeon dungeon)
 	{
 		int i;
-		Item temp;
-		/*
-		 * finditem takes a name and returns the Item with the specific name
-		 */
+		Item temp,actualItem = null;
+		
 		if (action.equalsIgnoreCase("pick up"))
 		{
-//			backpack[flag] = finditem(item);
+			actualItem = dungeon.findItem(item);
+			if(actualItem.equals(null))
+			{
+				return "That's not an item you can pick up";
+			}
+			else
+			{
+				backpack[flag] = actualItem;
+				flag++;
+				return "You picked up " + item;
+			}
 		}
 		
 		if (action.equalsIgnoreCase("drop"))
@@ -54,21 +62,12 @@ public class Player {
 					backpack[i] = backpack[flag-1];
 					backpack[flag-1] = temp;
 					backpack[flag-1] = null;
-					break;
+					flag = flag -1;
+					return "You dropped " + item;
 				}
 			}
 		}
-		/*
-		 * returns correct answer picked up or dropped
-		 */
-		if(action.equalsIgnoreCase("pick up"))
-		{
-			return "You picked up " + item;
-		}
-		else
-		{
-			return "You dropped " + item;
-		}
+		return "Use proper commands";
 	}
 	
 	public int attack(Mob mob)
@@ -126,9 +125,25 @@ public class Player {
 		}
 	}
 	
-	public String move(String direction)
+	public String move(String direction, Dungeon dungeon)
 	{
-		return "Great, you moved in an arbitrary direction.";
+		if(direction.equalsIgnoreCase("North"))
+		{
+			dungeon.ChangePlayerLocation(2);
+		}
+		else if(direction.equalsIgnoreCase("East"))
+		{
+			dungeon.ChangePlayerLocation(1);
+		}
+		else if(direction.equalsIgnoreCase("East"))
+		{
+			dungeon.ChangePlayerLocation(-1);
+		}
+		else
+		{
+			dungeon.ChangePlayerLocation(-2);
+		}
+		return "Great, you moved towards the " + direction;
 	}
 	
 	public String equip(String item)
@@ -143,6 +158,7 @@ public class Player {
 				backpack[i] = backpack[flag-1];
 				backpack[flag-1] = temp;
 				backpack[flag-1] = null;
+				flag = flag - 1;
 				break;
 			}
 		}
@@ -155,11 +171,11 @@ public class Player {
 			armor = temp;
 		}
 		
-		return "You just equiped" + temp.name();
+		return "You just equipped" + temp.name();
 	}
 	public String info(Dungeon dungeon)
 	{
-		return "Health: " + this.health() + " Room: " + dungeon.location();
+		return "Health: " + this.health() + " Room: " + dungeon.Playerlocation();
 	}
 	public String hand()
 	{

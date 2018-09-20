@@ -77,27 +77,27 @@ public class TheGame {
 			{
 				out.println(narrator.say("What item do you want to pick up?"));
 				input = in.nextLine();
-				player.manage_inventory("pick up", input);
+				System.out.println(player.manage_inventory("pick up", input,TheDungeon));
 			}
 			
 			else if (input.equalsIgnoreCase("drop"))
 			{
 				out.println(narrator.say("What item do you want to drop?"));
 				input = in.nextLine();
-				player.manage_inventory("drop", input);
+				System.out.println(player.manage_inventory("drop", input,TheDungeon));
 			}
 			
 			else if (input.equalsIgnoreCase("equip"))
 			{
 				out.println(narrator.say("What item do you want to equip?"));
 				input = in.nextLine();
-				player.equip(input);
+				System.out.println(player.equip(input));
 			}
 			
 			else if(input.equalsIgnoreCase("info"))
 			{
 				out.println(narrator.say("Uh, let's see here..."));
-				player.info(TheDungeon);
+				out.println(player.info(TheDungeon));
 			}
 			
 			else if(input.equalsIgnoreCase("attack"))
@@ -110,7 +110,7 @@ public class TheGame {
 				out.println(narrator.say("Okay, so where are we going? We can go North, South, East, or West."));
 				out.println(narrator.say("No pressure or anything, but I'm letting you do the navigation."));
 				input = in.nextLine();
-				player.move(input);
+				System.out.println(player.move(input,TheDungeon));
 			}
 			
 			else if(input.equalsIgnoreCase("exit"))
