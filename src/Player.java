@@ -69,9 +69,34 @@ public class Player {
 		}
 	}
 	
-	public String attack()
+	public int attack(Mob mob)
 	{
-		return "You attacked!";
+		mob.takeDamage(this.attack);
+		return this.attack;
+	}
+
+	public int takeDamage(int amount)
+	{
+		this.health -= amount;
+		if (this.health <= 0)
+		{
+			this.die();
+			return 0;
+		}
+		else
+		{
+			return health;
+		}
+	}
+
+	public int healHealth(int amount)
+	{
+		this.health += amount;
+		if (this.health >= 42)
+		{
+			this.health = 42;
+		}
+		return health;
 	}
 	
 	public boolean exit()
