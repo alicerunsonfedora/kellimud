@@ -3,17 +3,18 @@
  * @author Marquis Kurt
  */
 public class Sword extends Item {
-    private String name = "Sword";
-    private String type = "Attack";
-
-    /**
-     * Instantiate the Sword object from Item.
-     */
     private int attack;
     private int level;
-    public Sword( int itemlevel)
+
+    /**
+     * Instantiate the Sword object from Item. The name and type are defined when you initialize the super() function. This function will initialize the parent class, so you must pass the name and type directly into super. Defining the name and the type are done through that instead of redefining them inside of this class.
+     * @param itemlevel Level of the item
+     * @author Marquis Kurt
+     */
+    public Sword(int itemlevel)
     {
-    	level = itemlevel;
+        super("Sword", "Attack");
+        level = itemlevel;
     	attack = level;
     }
 }
