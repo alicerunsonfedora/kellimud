@@ -69,9 +69,10 @@ public class Player {
 		}
 	}
 	
-	public String attack()
+	public int attack(Mob mob)
 	{
-		return "You attacked!";
+		mob.takeDamage(this.attack);
+		return this.attack;
 	}
 
 	public int takeDamage(int amount)
