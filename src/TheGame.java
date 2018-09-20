@@ -1,4 +1,5 @@
-import java.util.Scanner;  
+import java.util.Scanner;
+import static java.lang.System.out;  
 public class TheGame {
 	public TheGame() {
 	
@@ -6,7 +7,7 @@ public class TheGame {
 
 	public static void main(String[] args)
 	{
-		Player player = new Player("FilthyCStudent","noob");
+		Player player = new Player("Filthy CS Student (you)","noob");
 		
 		Room[] thisDick = new Room[9];
 		thisDick[0] = new Room(player,0,1);
@@ -20,59 +21,82 @@ public class TheGame {
 		thisDick[8] = new Room(player,8,1);
 		Dungeon TheDungeon = new Dungeon(thisDick);
 		
-		System.out.println("Tom : Hello Stranger");
-		System.out.println("Tom : My name is Tom Kelliher");
-		System.out.println("Tom : WAIT WHAT???");
-		System.out.println("Tom : IS THAT 42 CHOCOLATE BARS???");
-		System.out.println("Tom : I'm out of here noob, good luck");
-		System.out.println("...");
-		System.out.println("Announcer : Little did Tom know, those bars had stupid CS students in them...");
-		System.out.println("Announcer : Tom's only weakness");
-		System.out.println("Announcer : After eating all 42 of them, he transoformed into the MAD TOM");
-		System.out.println("Announcer : You are in a dungeon, your job is to find MAD TOM and end his suffering");
-		System.out.println("Announcer : Good Luck, Adventurer");
+		Speaker tom = new Speaker("Tom");
+		Speaker narrator = new Speaker("Announcer");
+		Speaker mc = new Speaker(player.name());
+
+		out.println(tom.say("Hello, stranger."));
+		out.println(tom.say("I'm Tom Kelliher."));
+		out.println(tom.say("Wait, what?"));
+		out.println(tom.say("Is that... 42 chocolate bars?"));
+		out.println(tom.say("Ahaha~"));
+		out.println(tom.say("AHAHA~"));
+		out.println(tom.say("AHAHAHAHAHAHAHAHAHAHAHAHAHAHA~!"));
+		out.println(tom.say("Good luck, noob! I'm outta here!"));
 		
+		out.println(mc.say("..."));
+		out.println(mc.say("What just happened?"));
+
+		out.println(narrator.say("Little did Tom know that the bars had stupid computer science students inside of them."));
+		out.println(narrator.say("That is, Tom's only weakness..."));
+		out.println(narrator.say("After eating all 42 of them, he transformed into... the MAD TOM!"));
+
+		tom.changeName("The Mad Tom");
+
+		out.println(narrator.say("Let's face it; you're in a dungeon now."));
+		out.println(narrator.say("I'll make this simple. Find the Mad Tom. End his suffering."));
+		out.println("Got it?");
+
+		out.println(mc.say("..."));
+		out.println(mc.say("I guess."));
+
+		out.println(narrator.say("Good. I knew I could count on you, " + player.name() + "."));
+		out.println(narrator.say("Good luck to you. If you need me to help, just ask."));
+		out.println(narrator.say("Oh, and you can call me Andy."));
+
+		narrator.changeName("Andy");
+
+/*
+		####################################################
+
+		Main Game Input
+
+		####################################################
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+*/		
 		
 
         Scanner in = new Scanner(System.in);
 		while(true)
 		{
 			boolean ExitFlag = false;
+			out.println(narrator.say("What should we do?\n$> "));
 			String input = in.nextLine();
 			
 			if(input.equalsIgnoreCase("pick up"))
 			{
-				System.out.println("What item do you want to pick up?");
+				out.println(narrator.say("What item do you want to pick up?"));
 				input = in.nextLine();
 				player.manage_inventory("pick up", input);
 			}
 			
 			else if (input.equalsIgnoreCase("drop"))
 			{
-				System.out.println("What item do you want to drop?");
+				out.println(narrator.say("What item do you want to drop?"));
 				input = in.nextLine();
 				player.manage_inventory("drop", input);
 			}
 			
 			else if (input.equalsIgnoreCase("equip"))
 			{
-				System.out.println("What item do you want to equip?");
+				out.println(narrator.say("What item do you want to equip?"));
 				input = in.nextLine();
 				player.equip(input);
 			}
 			
 			else if(input.equalsIgnoreCase("info"))
 			{
+				out.println(narrator.say("Uh, let's see here..."));
 				player.info(TheDungeon);
 			}
 			
@@ -83,8 +107,8 @@ public class TheGame {
 			
 			else if(input.equalsIgnoreCase("move"))
 			{
-				System.out.println("What direction do you want to move to?");
-				System.out.println("North,East,West,South");
+				out.println(narrator.say("Okay, so where are we going? We can go North, South, East, or West."));
+				out.println(narrator.say("No pressure or anything, but I'm letting you do the navigation."));
 				input = in.nextLine();
 				player.move(input);
 			}
@@ -99,8 +123,8 @@ public class TheGame {
 			}
 			else
 			{
-				System.out.println("The Fuck you talking about dude?");
-				System.out.println("I mean... Use proper command");
+				out.println(narrator.say("Eh? I-I don't understand what you mean."));
+				out.println(narrator.say("Could you try a valid command next time?"));
 			}
 			if (ExitFlag == true)
 			{
