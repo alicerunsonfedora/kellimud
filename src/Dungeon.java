@@ -31,6 +31,17 @@ public class Dungeon {
 	{
 		return playerLocation;
 	}
+	
+	public Item findItem(String item)
+	{
+		Item x = rooms[playerLocation].getItem();
+		if(x.name().equalsIgnoreCase(item))
+		{
+			rooms[playerLocation].removeItem();
+			return x;
+		}
+		return null;
+	}
 
 	public void ChangePlayerLocation(int x)
 	{
