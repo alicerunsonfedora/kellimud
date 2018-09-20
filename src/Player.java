@@ -130,9 +130,9 @@ public class Player {
 		
 		return "You just equiped" + temp.name();
 	}
-	public String info(Player player, Dungeon dungeon)
+	public String info(Dungeon dungeon)
 	{
-		return "Health: " + player.health() + " Room: " + dungeon.location();
+		return "Health: " + this.health() + " Room: " + dungeon.location();
 	}
 	public String hand()
 	{

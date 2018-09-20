@@ -73,7 +73,7 @@ public class TheGame {
 			
 			else if(input.equalsIgnoreCase("info"))
 			{
-				player.info(player, TheDungeon);
+				player.info(TheDungeon);
 			}
 			
 			else if(input.equalsIgnoreCase("attack"))
