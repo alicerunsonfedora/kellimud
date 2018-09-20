@@ -53,16 +53,27 @@ public class TheGame {
 			if(input.equalsIgnoreCase("pick up"))
 			{
 				System.out.println("What item do you want to pick up?");
+				input = in.nextLine();
+				player.manage_inventory("pick up", input);
 			}
 			
 			else if (input.equalsIgnoreCase("drop"))
 			{
 				System.out.println("What item do you want to drop?");
+				input = in.nextLine();
+				player.manage_inventory("drop", input);
 			}
 			
 			else if (input.equalsIgnoreCase("equip"))
 			{
 				System.out.println("What item do you want to equip?");
+				input = in.nextLine();
+				player.equip(input);
+			}
+			
+			else if(input.equalsIgnoreCase("info"))
+			{
+				player.info(TheDungeon);
 			}
 			
 			else if(input.equalsIgnoreCase("attack"))
@@ -73,6 +84,9 @@ public class TheGame {
 			else if(input.equalsIgnoreCase("move"))
 			{
 				System.out.println("What direction do you want to move to?");
+				System.out.println("North,East,West,South");
+				input = in.nextLine();
+				player.move(input);
 			}
 			
 			else if(input.equalsIgnoreCase("exit"))

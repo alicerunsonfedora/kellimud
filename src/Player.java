@@ -69,9 +69,34 @@ public class Player {
 		}
 	}
 	
-	public String attack()
+	public int attack(Mob mob)
 	{
-		return "You attacked!";
+		mob.takeDamage(this.attack);
+		return this.attack;
+	}
+
+	public int takeDamage(int amount)
+	{
+		this.health -= amount;
+		if (this.health <= 0)
+		{
+			this.die();
+			return 0;
+		}
+		else
+		{
+			return health;
+		}
+	}
+
+	public int healHealth(int amount)
+	{
+		this.health += amount;
+		if (this.health >= 42)
+		{
+			this.health = 42;
+		}
+		return health;
 	}
 	
 	public boolean exit()
@@ -99,25 +124,41 @@ public class Player {
 		}
 	}
 	
-	public String move()
+	public String move(String direction)
 	{
 		return "Great, you moved in an arbitrary direction.";
 	}
 	
-	public String equip( Item item)
+	public String equip(String item)
 	{
-		if(item.type().equalsIgnoreCase("Sword"))
+		int i;
+		Item temp = null;
+		for(i=0;i<10;i++)
 		{
-			hand = item;
+			if(backpack[i].name().equalsIgnoreCase(item))
+			{
+				temp = backpack[i];
+				backpack[i] = backpack[flag-1];
+				backpack[flag-1] = temp;
+				backpack[flag-1] = null;
+				break;
+			}
+		}
+		if(temp.type().equalsIgnoreCase("Sword"))
+		{
+			hand = temp;
 		}
 		else
 		{
-			armor = item;
+			armor = temp;
 		}
 		
-		return "You just equiped" + item.name();
+		return "You just equiped" + temp.name();
 	}
-	
+	public String info(Dungeon dungeon)
+	{
+		return "Health: " + this.health() + " Room: " + dungeon.location();
+	}
 	public String hand()
 	{
 		return hand.name();

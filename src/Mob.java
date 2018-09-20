@@ -1,8 +1,9 @@
+import java.util.Random;
 
 public class Mob {
 
 	private int lvl,health,attack,defense;
-	
+
 	public Mob(int level) 
 	{
 		lvl = 1;
@@ -11,11 +12,28 @@ public class Mob {
 		defense = lvl;
 	}
 	
-	public String attack()
+	public int attack(Player player)
 	{
-		return "The mob has attacked.";
+		Random damagePoint = new Random();
+		int attackLevel = damagePoint.nextInt(5);
+		player.takeDamage(attackLevel);
+		return attackLevel;
 	}
 	
+	public int takeDamage(int amount)
+	{
+		this.health -= amount;
+		if (this.health <= 0)
+		{
+			this.die();
+			return 0;
+		}
+		else
+		{
+			return health;
+		}
+	}
+
 	public String die()
 	{
 		return "The mob died!";
