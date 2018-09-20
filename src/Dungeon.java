@@ -27,11 +27,15 @@ public class Dungeon {
 		return playerLocation;
 	}
 	
-	public int location()
+	public int Playerlocation()
 	{
 		return playerLocation;
 	}
 
+	public void ChangePlayerLocation(int x)
+	{
+		playerLocation = playerLocation + x;
+	}
 	/**
 	 * Spawns the player into a random location.
 	 */

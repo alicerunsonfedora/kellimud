@@ -124,9 +124,25 @@ public class Player {
 		}
 	}
 	
-	public String move(String direction)
+	public String move(String direction, Dungeon dungeon)
 	{
-		return "Great, you moved in an arbitrary direction.";
+		if(direction.equalsIgnoreCase("North"))
+		{
+			dungeon.ChangePlayerLocation(2);
+		}
+		else if(direction.equalsIgnoreCase("East"))
+		{
+			dungeon.ChangePlayerLocation(1);
+		}
+		else if(direction.equalsIgnoreCase("East"))
+		{
+			dungeon.ChangePlayerLocation(-1);
+		}
+		else
+		{
+			dungeon.ChangePlayerLocation(-2);
+		}
+		return "Great, you moved towards the " + direction;
 	}
 	
 	public String equip(String item)
@@ -153,11 +169,11 @@ public class Player {
 			armor = temp;
 		}
 		
-		return "You just equiped" + temp.name();
+		return "You just equipped" + temp.name();
 	}
 	public String info(Dungeon dungeon)
 	{
-		return "Health: " + this.health() + " Room: " + dungeon.location();
+		return "Health: " + this.health() + " Room: " + dungeon.Playerlocation();
 	}
 	public String hand()
 	{

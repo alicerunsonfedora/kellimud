@@ -86,7 +86,7 @@ public class TheGame {
 				System.out.println("What direction do you want to move to?");
 				System.out.println("North,East,West,South");
 				input = in.nextLine();
-				player.move(input);
+				player.move(input,TheDungeon);
 			}
 			
 			else if(input.equalsIgnoreCase("exit"))
