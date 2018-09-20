@@ -26,6 +26,11 @@ public class Dungeon {
 	{
 		return playerLocation;
 	}
+	
+	public int location()
+	{
+		return playerLocation;
+	}
 
 	/**
 	 * Spawns the player into a random location.
