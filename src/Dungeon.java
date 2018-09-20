@@ -74,4 +74,10 @@ public class Dungeon {
 		return "Mobs definitely spawned successfully.";
 	}
 
+	public String getRoomInfo()
+	{	
+		String lootLevel = Integer.toString(rooms[playerLocation].getItem().getLevel());
+		return rooms[playerLocation].getItem().name() + " (Level " + lootLevel + ")";
+	}
+
 }
