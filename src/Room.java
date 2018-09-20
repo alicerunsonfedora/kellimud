@@ -34,6 +34,16 @@ public class Room {
 	{
 		return "The mobs are here.";
 	}
+	
+	public Item getItem()
+	{
+		return loot;
+	}
+	
+	public void removeItem()
+	{
+		loot = null;
+	}
 
 	/**
 	 * Removes a mob from the room
