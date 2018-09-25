@@ -78,7 +78,6 @@ public class Dungeon {
 	{
 		return rooms[playerLocation];
 	}
-}
 
 	public String getRoomInfo()
 	{	
