@@ -3,4 +3,4 @@
 rm -rf *.class
 javac TheGame.java
 java TheGame
-clear
+# clear

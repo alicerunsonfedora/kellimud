@@ -1,5 +1,6 @@
 import java.util.Scanner;
-import static java.lang.System.out;  
+import java.io.Console;
+import static java.lang.System.out;
 public class TheGame {
 	public TheGame() {
 	
@@ -69,6 +70,11 @@ public class TheGame {
         Scanner in = new Scanner(System.in);
 		while(true)
 		{
+			if (player.isDead)
+			{
+				break;
+			}
+			
 			boolean ExitFlag = false;
 			out.println(narrator.say("What should we do?\n$> "));
 			String input = in.nextLine();
@@ -129,6 +135,44 @@ public class TheGame {
 					break;
 				}
 			}
+
+			else if (input.equalsIgnoreCase("clear"))
+			{
+				out.println("\f");
+				out.println(narrator.say("Alright, I cleared it up."));
+			}
+
+			else if (input.equalsIgnoreCase("me"))
+			{
+				out.println(narrator.say("Here's all I know about you:"));
+				out.println("Name: " + player.name());
+				out.println("Level: " + player.level());
+				out.println("Health: " + player.level());
+			}
+
+			else if (input.equalsIgnoreCase("fuck"))
+			{
+				out.println(narrator.say("E-Eh? That's not nice..."));
+				out.println(narrator.say("W-ho?"));
+
+				String who = in.nextLine();
+
+				if (who.equalsIgnoreCase("mob"))
+				{
+					out.println(tom.say("Well, the mob ate its child and is now stronger than you."));
+					out.println(tom.say(player.die()));
+				}
+				else if (who.equalsIgnoreCase("you"))
+				{
+					out.println(narrator.say("Uwaa~!"));
+				}
+				else 
+				{
+					out.println(narrator.say("That's weird. How about no?"));
+				}
+
+			}
+
 			else
 			{
 				out.println(narrator.say("Eh? I-I don't understand what you mean."));
