@@ -9,13 +9,14 @@ public class Room {
 	private Item loot;
 	private Boolean monsterInRoom;
 	private Boolean[] doors = new Boolean[4];
+	private Mob mob;
 	Random rand = new Random();
 	/**
 	 * Instantiate the object
 	 */
 	public Room(Player player,int RoomNumber, int MobLevel) {
 		ID = RoomNumber;
-		Mob mob = new Mob(MobLevel);
+		mob = new Mob(MobLevel);
 		int  n = rand.nextInt(2) + 1;
 		if(n==1)
 		{
@@ -106,5 +107,14 @@ public class Room {
 	public Boolean CanMove( int x)
 	{
 		return this.doors[x];
+	}
+	
+	public Boolean Monster()
+	{
+		if(mob.dead())
+		{
+			monsterInRoom = false;
+		}
+		return this.monsterInRoom;
 	}
 }

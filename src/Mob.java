@@ -43,6 +43,15 @@ public class Mob {
 	{
 		return "The mob moved in a particular direction.";
 	}
+	
+	public Boolean dead()
+	{
+		if(this.health <= 0)
+		{
+			return true;
+		}
+		return false;
+	}
 }
 
 /*
