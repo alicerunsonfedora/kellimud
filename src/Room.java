@@ -107,4 +107,9 @@ public class Room {
 	{
 		return this.doors[x];
 	}
+	
+	public Boolean Monster()
+	{
+		return this.monsterInRoom;
+	}
 }

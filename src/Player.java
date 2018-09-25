@@ -130,34 +130,40 @@ public class Player {
 	public String move(String direction, Dungeon dungeon)
 	{
 		Boolean flagMove = false;
-		
-		if(direction.equalsIgnoreCase("North") && dungeon.room().CanMove(2))
+		if(dungeon.room().Monster())
 		{
-			dungeon.ChangePlayerLocation(2);
-			flagMove = true;
-		}
-		else if(direction.equalsIgnoreCase("East") && dungeon.room().CanMove(1))
-		{
-			dungeon.ChangePlayerLocation(1);
-			flagMove = true;
-		}
-		else if(direction.equalsIgnoreCase("West") && dungeon.room().CanMove(3))
-		{
-			dungeon.ChangePlayerLocation(-1);
-			flagMove = true;
-		}
-		else if(dungeon.room().CanMove(0))
-		{
-			dungeon.ChangePlayerLocation(-2);
-			flagMove = true;
-		}
-		if(flagMove.equals(true))
-		{
-			return "Great, you moved towards the " + direction;
+			if(direction.equalsIgnoreCase("North") && dungeon.room().CanMove(2))
+			{
+				dungeon.ChangePlayerLocation(2);
+				flagMove = true;
+			}
+			else if(direction.equalsIgnoreCase("East") && dungeon.room().CanMove(1))
+			{
+				dungeon.ChangePlayerLocation(1);
+				flagMove = true;
+			}
+			else if(direction.equalsIgnoreCase("West") && dungeon.room().CanMove(3))
+			{
+				dungeon.ChangePlayerLocation(-1);
+				flagMove = true;
+			}
+			else if(dungeon.room().CanMove(0))
+			{
+				dungeon.ChangePlayerLocation(-2);
+				flagMove = true;
+			}
+			if(flagMove.equals(true))
+			{
+				return "Great, you moved towards the " + direction;
+			}
+			else
+			{
+				return "You can't go that way";
+			}
 		}
 		else
 		{
-			return "You can't go that way";
+			return "There is a mob in the room boyyyyy, where do you think you are going";
 		}
 	}
 	
