@@ -25,6 +25,56 @@ public class Room {
 		{
 			loot = new Armor(player.level() + 1);
 		}
+		if(RoomNumber == 0)
+		{
+			doors[0]=false;
+			doors[1]=true;
+			doors[2]=false;
+			doors[3]=false;
+		}
+		else if(RoomNumber == 2)
+		{
+			doors[0]=true;
+			doors[1]=false;
+			doors[2]=false;
+			doors[3]=true;
+		}
+		else if(RoomNumber == 6)
+		{
+			doors[0]=true;
+			doors[1]=true;
+			doors[2]=false;
+			doors[3]=false;
+		}
+		else if(RoomNumber == 1 || RoomNumber == 7 || RoomNumber == 4)
+		{
+			doors[0]=false;
+			doors[1]=true;
+			doors[2]=false;
+			doors[3]=true;
+		}
+		else if(RoomNumber == 3)
+		{
+			doors[0]=true;
+			doors[1]=false;
+			doors[2]=false;
+			doors[3]=true;
+		}
+		else if(RoomNumber == 5)
+		{
+			doors[0]=false;
+			doors[1]=true;
+			doors[2]=true;
+			doors[3]=false;
+		}
+		else 
+		{
+			doors[0]=false;
+			doors[1]=false;
+			doors[2]=false;
+			doors[3]=true;
+		}
+		
 	}
 
 	/**
@@ -52,5 +102,9 @@ public class Room {
 	{
 		return "Mob be gone!";
 	}
-
+	
+	public Boolean CanMove( int x)
+	{
+		return this.doors[x];
+	}
 }
