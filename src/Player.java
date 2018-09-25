@@ -188,7 +188,7 @@ public class Player {
 	}
 	public String info(Dungeon dungeon)
 	{
-		return "Health: " + this.health() + " Room: " + dungeon.Playerlocation();
+		return "Health: " + this.health() + "\nRoom: " + dungeon.Playerlocation() + "\nLoot: " + dungeon.getRoomInfo();
 	}
 	public String hand()
 	{
