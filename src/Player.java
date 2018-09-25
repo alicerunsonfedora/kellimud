@@ -72,9 +72,9 @@ public class Player {
 		return "Use proper commands";
 	}
 	
-	public int attack(Mob mob)
+	public int attack(Dungeon dungeon)
 	{
-		mob.takeDamage(this.attack);
+		dungeon.room().mob().takeDamage(this.attack);
 		return this.attack;
 	}
 
@@ -130,7 +130,7 @@ public class Player {
 	public String move(String direction, Dungeon dungeon)
 	{
 		Boolean flagMove = false;
-		if(dungeon.room().Monster())
+		if(dungeon.room().MobAlive())
 		{
 			if(direction.equalsIgnoreCase("North") && dungeon.room().CanMove(2))
 			{
