@@ -16,6 +16,7 @@ public class Room {
 	 */
 	public Room(Player player,int RoomNumber, int MobLevel) {
 		ID = RoomNumber;
+		monsterInRoom = true;
 		mob = new Mob(MobLevel);
 		int  n = rand.nextInt(2) + 1;
 		if(n==1)
