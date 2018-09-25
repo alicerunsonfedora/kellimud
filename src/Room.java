@@ -110,12 +110,17 @@ public class Room {
 		return this.doors[x];
 	}
 	
-	public Boolean Monster()
+	public Boolean MobAlive()
 	{
 		if(mob.dead())
 		{
 			monsterInRoom = false;
 		}
 		return this.monsterInRoom;
+	}
+	
+	public Mob mob()
+	{
+		return mob;
 	}
 }

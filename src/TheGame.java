@@ -79,7 +79,7 @@ public class TheGame {
 			
 			else if(input.equalsIgnoreCase("attack"))
 			{
-				System.out.println("");
+				System.out.println("You did " + player.attack(TheDungeon) + " damage to the mob");
 			}
 			
 			else if(input.equalsIgnoreCase("move"))

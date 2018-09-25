@@ -72,9 +72,9 @@ public class Player {
 		return "Use proper commands";
 	}
 	
-	public int attack(Mob mob)
+	public int attack(Dungeon dungeon)
 	{
-		mob.takeDamage(this.attack);
+		dungeon.room().mob().takeDamage(this.attack);
 		return this.attack;
 	}
 
