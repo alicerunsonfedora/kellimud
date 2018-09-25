@@ -73,6 +73,12 @@ public class Dungeon {
 		mobLocations[0] = chrysalisSE.nextInt(9);
 		return "Mobs definitely spawned successfully.";
 	}
+	
+	public Room room() 
+	{
+		return rooms[playerLocation];
+	}
+}
 
 	public String getRoomInfo()
 	{	
