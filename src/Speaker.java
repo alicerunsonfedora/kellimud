@@ -17,4 +17,9 @@ public class Speaker
         name = newName;
         return name;
     }
+
+    public String myName()
+    {
+        return name;
+    }
 }
