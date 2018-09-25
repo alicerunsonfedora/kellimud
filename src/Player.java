@@ -130,7 +130,7 @@ public class Player {
 	public String move(String direction, Dungeon dungeon)
 	{
 		Boolean flagMove = false;
-		if(dungeon.room().Monster())
+		if(!dungeon.room().Monster())
 		{
 			if(direction.equalsIgnoreCase("North") && dungeon.room().CanMove(2))
 			{
@@ -163,7 +163,7 @@ public class Player {
 		}
 		else
 		{
-			return "There is a mob in the room boyyyyy, where do you think you are going";
+			return "There is a mob in the room boyyyyy, where do you think you are going?";
 		}
 	}
 	
