@@ -8,6 +8,7 @@ public class Player {
 	private Item hand,armor;
 	private Item[] backpack = new Item[10];
 	private int flag;
+	public boolean isDead;
 	/*
 	 * flag is a pointer that shows the last position of the backpack that is empty
 	 * 
@@ -24,9 +25,10 @@ public class Player {
 		flag = 0;
 	}
 	
-	public void die()
+	public String die()
 	{
-		
+		isDead = true;
+		return "Ya die! Ya die! Ya die! Ya die!";
 	}
 	
 	public String manage_inventory(String action,String item,Dungeon dungeon)
