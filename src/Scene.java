@@ -50,6 +50,18 @@ public class Scene
         Characters.tom.say("Ya die, ya die, ya die, ya die!")
     };
 
+    static String[] yaDieScene = 
+    {
+        Characters.tom.say("Unfortunately, the mob has managed to introduce you to death."),
+        Characters.tom.say("Ya die, ya die, ya die, ya die!")
+    };
+
+    static String[] mobDieScene = 
+    {
+        Characters.narrator.say("Congrats, you killed the mob!"),
+        Characters.narrator.say("Yaay~!")
+    };
+
     static void playScene(String[] scene)
     {
         for (String s : scene)
@@ -58,7 +70,6 @@ public class Scene
             try {
                 Thread.sleep(1500);
             } catch (InterruptedException e) {
-                // TODO Auto-generated catch block
                 
             }
         }

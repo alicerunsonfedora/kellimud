@@ -35,6 +35,7 @@ public class TheGame {
 		{
 			if (player.isDead)
 			{
+				sceneHandler.playScene(sceneHandler.yaDieScene);
 				break;
 			}
 			
