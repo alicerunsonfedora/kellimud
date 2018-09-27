@@ -35,13 +35,28 @@ public class Scene
 		Characters.narrator.say("Oh, and you can call me Andy.")
     };
 
+    static String[] confirmGameResume = {
+        Characters.narrator.say("*gasp* Really?"),
+		Characters.narrator.say("Yay~!"),
+		Characters.narrator.say("Onward, fellow soldier~!")
+    };
+
+    static String[] fuckMobDieScene = 
+    {
+        Characters.tom.say("So you ended up fucking the mob."),
+        Characters.tom.say("Lucky for you, you get a child."),
+        Characters.tom.say("At the same time, you're also at a loss as the mob eats the child."),
+        Characters.tom.say("Now the mob's stronger than you and, well, it doesn't end well for you."),
+        Characters.tom.say("Ya die, ya die, ya die, ya die!")
+    };
+
     static void playScene(String[] scene)
     {
         for (String s : scene)
         {
             out.println(s);
             try {
-                Thread.sleep(3000);
+                Thread.sleep(1500);
             } catch (InterruptedException e) {
                 // TODO Auto-generated catch block
                 
