@@ -132,6 +132,7 @@ public class TheGame {
 				if (who.equalsIgnoreCase("mob"))
 				{
 					sceneHandler.playScene(sceneHandler.fuckMobDieScene);
+					break;
 				}
 				else if (who.equalsIgnoreCase("you"))
 				{
