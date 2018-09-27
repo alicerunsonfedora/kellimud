@@ -30,7 +30,8 @@ public class Scene
 		Characters.narrator.say("Got it?"),
 		Characters.mc.say("..."),
 		Characters.mc.say("I guess."),
-		Characters.narrator.say("Good. I knew I could count on you, " + Characters.mc.myName() + "."),
+        Characters.narrator.say("Good. I knew I could count on you, " + Characters.mc.myName() + "."),
+        Characters.narrator.say("There's a sword in the room. You should equip it before you die weaponless."),
 		Characters.narrator.say("Good luck to you. If you need me to help, just ask."),
 		Characters.narrator.say("Oh, and you can call me Andy.")
     };
