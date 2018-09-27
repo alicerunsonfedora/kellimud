@@ -24,6 +24,11 @@ public class TheGame {
 		
 		Scene sceneHandler = new Scene();
 
+		out.println("#####################################");
+		out.println("#        REALM OF THE MAD TOM       #");
+		out.println("#       (C) 2018 Version 1.0.0      #");
+		out.println("#####################################");
+
 		Characters.mc.changeName("Filthy CS Student (you)");
 		sceneHandler.playScene(sceneHandler.introSceneA);
 		Characters.tom.changeName("The Mad Tom");
