@@ -77,7 +77,6 @@ public class Player {
 		int damage[] = new int[2];
 		dungeon.room().mob().takeDamage(this.attack);
 		damage[1] = dungeon.room().mob().attack(this);
-		this.takeDamage(damage[1]);
 		damage[0] = this.attack;
 		return damage;
 	}
