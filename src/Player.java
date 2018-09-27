@@ -194,15 +194,15 @@ public class Player {
 		if(temp.type().equalsIgnoreCase("Sword"))
 		{
 			hand = temp;
-			this.attack = this.attack + hand.getLevel();
+			this.attack = 1 + temp.getLevel();
 		}
 		else
 		{
 			armor = temp;
-			this.defense = this.defense + armor.getLevel();
+			this.defense = temp.getLevel();
 		}
 		
-		return "You just equipped" + temp.name();
+		return "You just equipped " + temp.name();
 	}
 	public String info(Dungeon dungeon)
 	{
