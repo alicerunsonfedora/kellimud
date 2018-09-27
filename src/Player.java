@@ -72,10 +72,14 @@ public class Player {
 		return "Use proper commands";
 	}
 	
-	public int attack(Dungeon dungeon)
+	public int[] attack(Dungeon dungeon)
 	{
+		int damage[] = new int[2];
 		dungeon.room().mob().takeDamage(this.attack);
-		return this.attack;
+		damage[1] = dungeon.room().mob().attack(this);
+		this.takeDamage(damage[1]);
+		damage[0] = this.attack;
+		return damage;
 	}
 
 	public int takeDamage(int amount)
