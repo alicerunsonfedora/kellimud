@@ -52,6 +52,16 @@ public class Mob {
 		}
 		return false;
 	}
+
+	public int health()
+	{
+		return health;
+	}
+
+	public int level()
+	{
+		return lvl;
+	}
 }
 
 /*
