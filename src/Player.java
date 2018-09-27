@@ -178,7 +178,7 @@ public class Player {
 	public String equip(String item)
 	{
 		int i;
-		Item temp = null;
+		Item temp = new NullItem();
 		for(i=9;i>=0;i--)
 		{
 			if(backpack[i].name().equalsIgnoreCase(item))
@@ -186,7 +186,7 @@ public class Player {
 				temp = backpack[i];
 				backpack[i] = backpack[flag-1];
 				backpack[flag-1] = temp;
-				backpack[flag-1] = null;
+				backpack[flag-1] = new NullItem();
 				flag = flag - 1;
 				break;
 			}
@@ -216,6 +216,11 @@ public class Player {
 	public String armor()
 	{
 		return armor.name();
+	}
+	
+	public int attackValue()
+	{
+		return attack;
 	}
 	
 	public int exp()
