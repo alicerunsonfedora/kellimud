@@ -23,6 +23,7 @@ public class Player {
 		defense = 0;
 		exp = 0;
 		flag = 0;
+		backpack[0] = new Sword(1);
 	}
 	
 	public String die()
@@ -75,7 +76,10 @@ public class Player {
 	public int[] attack(Dungeon dungeon)
 	{
 		int damage[] = new int[2];
-		dungeon.room().mob().takeDamage(this.attack);
+		if(dungeon.room().mob().takeDamage(this.attack) == 0)
+		{
+			
+		}
 		damage[1] = dungeon.room().mob().attack(this);
 		damage[0] = this.attack;
 		return damage;
@@ -174,7 +178,7 @@ public class Player {
 	{
 		int i;
 		Item temp = null;
-		for(i=0;i<10;i++)
+		for(i=10;i>=0;i--)
 		{
 			if(backpack[i].name().equalsIgnoreCase(item))
 			{
