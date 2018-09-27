@@ -19,8 +19,8 @@ public class Player {
 		playerclass = aclass;
 		lvl = 1;
 		health = 10;
-		attack = 1 + hand.getLevel();
-		defense = 0 + hand.getLevel();
+		attack = 1;
+		defense = 0;
 		exp = 0;
 		flag = 0;
 		backpack[0] = new Sword(1);
@@ -194,10 +194,12 @@ public class Player {
 		if(temp.type().equalsIgnoreCase("Sword"))
 		{
 			hand = temp;
+			this.attack = this.attack + hand.getLevel();
 		}
 		else
 		{
 			armor = temp;
+			this.defense = this.defense + armor.getLevel();
 		}
 		
 		return "You just equipped" + temp.name();
