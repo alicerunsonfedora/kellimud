@@ -174,7 +174,7 @@ public class Player {
 	{
 		int i;
 		Item temp = null;
-		for(i=10;i>=0;i--)
+		for(i=9;i>=0;i--)
 		{
 			if(backpack[i].name().equalsIgnoreCase(item))
 			{
