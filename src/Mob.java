@@ -34,9 +34,9 @@ public class Mob {
 		}
 	}
 
-	public String die()
+	public void die()
 	{
-		return "The mob died!";
+		Scene.playScene(Scene.mobDieScene);
 	}
 	
 	public String move()
