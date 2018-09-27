@@ -120,6 +120,8 @@ public class TheGame {
 				out.println("Name: " + player.name());
 				out.println("Level: " + player.level());
 				out.println("Health: " + player.health());
+				out.println("Attack: " + player.attackValue());
+				out.println("Defense: " + player.defense());
 			}
 
 			else if (input.equalsIgnoreCase("fuck"))
