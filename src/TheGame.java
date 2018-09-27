@@ -124,6 +124,21 @@ public class TheGame {
 				out.println("Defense: " + player.defense());
 			}
 
+			else if (input.equalsIgnoreCase("mob"))
+			{
+				if (TheDungeon.room().MobAlive())
+				{
+					out.println(Characters.narrator.say("Here's what I know about the mob:"));
+					out.println("Level: " + Integer.toString(TheDungeon.room().mob().level()));
+					out.println("Health: " + Integer.toString(TheDungeon.room().mob().health()));
+				}
+
+				else
+				{
+					out.println(Characters.narrator.say("Welp, looks like there's no mob here..."));
+				}
+			}
+
 			else if (input.equalsIgnoreCase("fuck"))
 			{
 				out.println(Characters.narrator.say("E-Eh? That's not nice..."));
