@@ -24,6 +24,11 @@ public class Player {
 		exp = 0;
 		flag = 0;
 		backpack[0] = new Sword(1);
+
+		for (int i=1; i<10; i++)
+		{
+			backpack[i] = new NullItem();
+		}
 	}
 	
 	public String die()
