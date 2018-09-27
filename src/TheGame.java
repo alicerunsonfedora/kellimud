@@ -79,7 +79,10 @@ public class TheGame {
 			
 			else if(input.equalsIgnoreCase("attack"))
 			{
-				System.out.println("You did " + player.attack(TheDungeon) + " damage to the mob");
+				int damage[] = new int[2];
+				damage = player.attack(TheDungeon);
+				System.out.println("You did " + damage[0] + " damage to the mob");
+				System.out.println("The Mob did " + damage[1] + " damage to you");
 			}
 			
 			else if(input.equalsIgnoreCase("move"))
@@ -110,7 +113,7 @@ public class TheGame {
 				out.println(Characters.narrator.say("Here's all I know about you:"));
 				out.println("Name: " + player.name());
 				out.println("Level: " + player.level());
-				out.println("Health: " + player.level());
+				out.println("Health: " + player.health());
 			}
 
 			else if (input.equalsIgnoreCase("fuck"))
