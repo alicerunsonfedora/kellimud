@@ -22,7 +22,7 @@ public class Player {
 		attack = 1;
 		defense = 0;
 		exp = 0;
-		flag = 0;
+		flag = 1;
 		backpack[0] = new Sword(1);
 	}
 	
