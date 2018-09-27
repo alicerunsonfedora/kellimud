@@ -76,10 +76,6 @@ public class Player {
 	public int[] attack(Dungeon dungeon)
 	{
 		int damage[] = new int[2];
-		if(dungeon.room().mob().takeDamage(this.attack) == 0)
-		{
-			
-		}
 		damage[1] = dungeon.room().mob().attack(this);
 		damage[0] = this.attack;
 		return damage;
