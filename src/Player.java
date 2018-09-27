@@ -5,7 +5,7 @@ public class Player {
     Scanner in = new Scanner(System.in);
 	private String name,playerclass;
 	private int lvl,health,attack,defense,exp;
-	private Item hand,armor;
+	private Item hand= new NullItem(),armor = new NullItem();
 	private Item[] backpack = new Item[10];
 	private int flag;
 	public boolean isDead;
@@ -19,8 +19,8 @@ public class Player {
 		playerclass = aclass;
 		lvl = 1;
 		health = 10;
-		attack = 1;
-		defense = 0;
+		attack = 1 + hand.getLevel();
+		defense = 0 + hand.getLevel();
 		exp = 0;
 		flag = 0;
 		backpack[0] = new Sword(1);
