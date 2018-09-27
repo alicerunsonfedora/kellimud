@@ -122,8 +122,7 @@ public class TheGame {
 
 				if (who.equalsIgnoreCase("mob"))
 				{
-					out.println(Characters.tom.say("Well, the mob ate its child and is now stronger than you."));
-					out.println(Characters.tom.say(player.die()));
+					sceneHandler.playScene(sceneHandler.fuckMobDieScene);
 				}
 				else if (who.equalsIgnoreCase("you"))
 				{

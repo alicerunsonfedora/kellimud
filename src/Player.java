@@ -104,20 +104,20 @@ public class Player {
 	
 	public boolean exit()
 	{
-		out.println("Are you sure you want to close the game?");
+		out.println(Characters.narrator.say("Are you sure you want to close the game?"));
 		
 		while(true)
 		{
 			String input = in.nextLine();
 			if(input.equalsIgnoreCase("yes"))
 			{
-				System.out.println("Goodbye.");
+				out.println(Characters.narrator.say("I guess it's goodbye, then."));
+				out.println(Characters.narrator.say("Until we meet again..."));
 				return true;
 			}
 			else if(input.equalsIgnoreCase("no"))
 			{
-				System.out.println("DECIDE DUDEEE,wanna play or not?");
-				System.out.println("I mean... Game resuming");
+				Scene.playScene(Scene.confirmGameResume);
 				return false;
 			}
 			else
