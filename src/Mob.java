@@ -17,6 +17,7 @@ public class Mob {
 		Random damagePoint = new Random();
 		int attackLevel = damagePoint.nextInt(2);
 		player.takeDamage(attackLevel);
+		this.takeDamage(player.attackValue());
 		return attackLevel;
 	}
 	
