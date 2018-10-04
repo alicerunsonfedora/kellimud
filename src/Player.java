@@ -191,7 +191,7 @@ public class Player {
 				break;
 			}
 		}
-		if(temp.type().equalsIgnoreCase("Sword"))
+		if(temp.name().equalsIgnoreCase("Sword"))
 		{
 			hand = temp;
 			this.attack = 1 + temp.getLevel();
@@ -208,9 +208,9 @@ public class Player {
 	{
 		return "Health: " + this.health() + "\nRoom: " + dungeon.Playerlocation() + "\nLoot: " + dungeon.getRoomInfo();
 	}
-	public String hand()
+	public Item hand()
 	{
-		return hand.name();
+		return hand;
 	}
 	
 	public String armor()

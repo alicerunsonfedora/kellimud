@@ -77,10 +77,19 @@ public class TheGame {
 				System.out.println(player.equip(input));
 			}
 			
+			else if(input.equalsIgnoreCase("hand"))
+			{
+				out.println(player.hand().name() + player.hand().getLevel());
+			}
+			
 			else if(input.equalsIgnoreCase("info"))
 			{
 				out.println(Characters.narrator.say("Uh, let's see here..."));
 				out.println(player.info(TheDungeon));
+			}
+			else if(input.equalsIgnoreCase("hand"))
+			{
+				out.println(player.hand());
 			}
 			
 			else if(input.equalsIgnoreCase("attack"))
