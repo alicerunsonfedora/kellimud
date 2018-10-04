@@ -79,7 +79,7 @@ public class TheGame {
 			
 			else if(input.equalsIgnoreCase("hand"))
 			{
-				out.println(player.hand().name() + player.hand().getLevel());
+				out.println(player.hand().name() + Integer.toString(player.hand().getLevel()));
 			}
 			
 			else if(input.equalsIgnoreCase("info"))
