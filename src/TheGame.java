@@ -51,7 +51,7 @@ public class TheGame {
 		} else {
 			//Add GUI parts here
 			GUIInterpreter gui = new GUIInterpreter();
-			}
 		}
-
 	}
+
+}
