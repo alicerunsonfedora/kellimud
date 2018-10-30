@@ -11,13 +11,10 @@ public class TheGame {
 		Boolean isCommandLine = true; //Use this to define type of app
 		
 		Player player = new Player("Filthy CS Student (you)","noob");
-		Room[] roomLayout = new Room[9];
+
+		Room room = new Room(player,1);
 		
-		for (int i = 0; i < 9; i++) {
-			roomLayout[i] = new Room(player, i, 1);
-		}
-		
-		Dungeon TheDungeon = new Dungeon(roomLayout);
+		Dungeon TheDungeon = new Dungeon(room);
 		Scene sceneHandler = new Scene();
 		
 		if (isCommandLine) {

@@ -60,10 +60,7 @@ public class CommandInterpreter {
 		
 		else if(input.equalsIgnoreCase("move"))
 		{
-			out.println(Characters.narrator.say("Okay, so where are we going? We can go North, South, East, or West."));
-			out.println(Characters.narrator.say("No pressure or anything, but I'm letting you do the navigation."));
-			input = in.nextLine();
-			System.out.println(player.move(input,TheDungeon));
+			System.out.println(player.move(TheDungeon));
 		}
 		
 		else if(input.equalsIgnoreCase("exit"))

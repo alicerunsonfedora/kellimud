@@ -6,16 +6,16 @@ import java.util.Random;
  * @author Marquis Kurt
  */
 public class Dungeon {
-	private Room[] rooms = new Room[9];
+	private Room room;
 	private int playerLocation;
 	private int[] mobLocations;
 	private Random chrysalisSE;
 	/**
 	 * Instantiate the object
 	 */
-	public Dungeon(Room[] RoomArray) 
+	public Dungeon(Room room1) 
 	{
-		rooms = RoomArray;
+		room = room1;
 	}
 
 	/**
@@ -34,10 +34,10 @@ public class Dungeon {
 	
 	public Item findItem(String item)
 	{
-		Item x = rooms[playerLocation].getItem();
+		Item x = room.getItem();
 		if(x.name().equalsIgnoreCase(item))
 		{
-			rooms[playerLocation].removeItem();
+			room.removeItem();
 			return x;
 		}
 		return null;
@@ -76,13 +76,18 @@ public class Dungeon {
 	
 	public Room room() 
 	{
-		return rooms[playerLocation];
+		return room;
 	}
 
 	public String getRoomInfo()
 	{	
-		String lootLevel = Integer.toString(rooms[playerLocation].getItem().getLevel());
-		return rooms[playerLocation].getItem().name() + " (Level " + lootLevel + ")";
+		String lootLevel = Integer.toString(room.getItem().getLevel());
+		return room.getItem().name() + " (Level " + lootLevel + ")";
+	}
+	
+	public void move(Player player)
+	{
+		this.room = new Room(player,player.level());
 	}
 
 }
