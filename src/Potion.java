@@ -3,9 +3,11 @@ public class Potion extends Item {
 	private Player myPatient;
 	private int power;
 	
-	@SuppressWarnings("unused")
-	private void healPatient() {
+	public int healPatient() {
 		myPatient.healHealth(power);
+		int x = power;
+		power = 0;
+		return x;
 	}
 	
 	public Potion(int effect, Player patient) {

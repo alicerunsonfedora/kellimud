@@ -50,6 +50,11 @@ public class CommandInterpreter {
 			out.println(player.hand());
 		}
 		
+		else if(input.equalsIgnoreCase("heal"))
+		{
+			System.out.println("You were healed by " + TheDungeon.UsePotion() + " health");
+		}
+		
 		else if(input.equalsIgnoreCase("attack"))
 		{
 			int damage[] = new int[2];

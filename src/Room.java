@@ -65,6 +65,11 @@ public class Room {
 		return this.doors[x];
 	}
 	
+	public int UsePotion()
+	{
+		return potion.healPatient();
+	}
+	
 	public Boolean MobAlive()
 	{
 		if(mob.dead())
