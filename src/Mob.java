@@ -17,16 +17,16 @@ public class Mob {
 		Random damagePoint = new Random();
 		int attackLevel = damagePoint.nextInt(2);
 		player.takeDamage(attackLevel);
-		this.takeDamage(player.attackValue());
+		this.takeDamage(player.attackValue(),player);
 		return attackLevel;
 	}
 	
-	public int takeDamage(int amount)
+	public int takeDamage(int amount,Player player)
 	{
 		this.health -= amount;
 		if (this.health <= 0)
 		{
-			this.die();
+			this.die(player);
 			return 0;
 		}
 		else
@@ -35,9 +35,10 @@ public class Mob {
 		}
 	}
 
-	public void die()
+	public void die(Player player)
 	{
 		Scene.playScene(Scene.mobDieScene);
+		player.increaseExp(5);
 	}
 	
 	public String move()

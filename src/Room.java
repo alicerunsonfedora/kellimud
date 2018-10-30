@@ -5,19 +5,17 @@ import java.util.Random;
  * @author Marquis Kurt
  */
 public class Room {
-	private int ID;
 	private Item loot;
 	private Boolean monsterInRoom;
 	private Boolean[] doors = new Boolean[4];
 	private Mob mob;
+	private Potion potion;
 	Random rand = new Random();
 	/**
 	 * Instantiate the object
 	 */
-	public Room(Player player,int RoomNumber, int MobLevel) {
-		ID = RoomNumber;
+	public Room(Player player, int MobLevel) {
 		monsterInRoom = true;
-		mob = new Mob(MobLevel);
 		int  n = rand.nextInt(2) + 1;
 		if(n==1)
 		{
@@ -27,55 +25,12 @@ public class Room {
 		{
 			loot = new Armor(player.level() + 1);
 		}
-		if(RoomNumber == 0)
+		if(rand.nextInt(2)+1 == 1)
 		{
-			doors[0]=false;
-			doors[1]=true;
-			doors[2]=false;
-			doors[3]=false;
+			mob = new Mob(MobLevel);
 		}
-		else if(RoomNumber == 2)
-		{
-			doors[0]=true;
-			doors[1]=false;
-			doors[2]=false;
-			doors[3]=true;
-		}
-		else if(RoomNumber == 6)
-		{
-			doors[0]=true;
-			doors[1]=true;
-			doors[2]=false;
-			doors[3]=false;
-		}
-		else if(RoomNumber == 1 || RoomNumber == 7 || RoomNumber == 4)
-		{
-			doors[0]=false;
-			doors[1]=true;
-			doors[2]=false;
-			doors[3]=true;
-		}
-		else if(RoomNumber == 3)
-		{
-			doors[0]=true;
-			doors[1]=false;
-			doors[2]=false;
-			doors[3]=true;
-		}
-		else if(RoomNumber == 5)
-		{
-			doors[0]=false;
-			doors[1]=true;
-			doors[2]=true;
-			doors[3]=false;
-		}
-		else 
-		{
-			doors[0]=false;
-			doors[1]=false;
-			doors[2]=false;
-			doors[3]=true;
-		}
+		int x = rand.nextInt(12) + 6;
+		potion = new Potion(x,player);
 		
 	}
 
@@ -108,6 +63,11 @@ public class Room {
 	public Boolean CanMove( int x)
 	{
 		return this.doors[x];
+	}
+	
+	public int UsePotion()
+	{
+		return potion.healPatient();
 	}
 	
 	public Boolean MobAlive()

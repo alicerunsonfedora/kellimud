@@ -18,7 +18,7 @@ public class Player {
 		name = aname;
 		playerclass = aclass;
 		lvl = 1;
-		health = 10;
+		health = 42;
 		attack = 1;
 		defense = 0;
 		exp = 0;
@@ -135,39 +135,12 @@ public class Player {
 		}
 	}
 	
-	public String move(String direction, Dungeon dungeon)
+	public String move(Dungeon dungeon)
 	{
-		Boolean flagMove = false;
 		if(!dungeon.room().MobAlive())
 		{
-			if(direction.equalsIgnoreCase("North") && dungeon.room().CanMove(2))
-			{
-				dungeon.ChangePlayerLocation(2);
-				flagMove = true;
-			}
-			else if(direction.equalsIgnoreCase("East") && dungeon.room().CanMove(1))
-			{
-				dungeon.ChangePlayerLocation(1);
-				flagMove = true;
-			}
-			else if(direction.equalsIgnoreCase("West") && dungeon.room().CanMove(3))
-			{
-				dungeon.ChangePlayerLocation(-1);
-				flagMove = true;
-			}
-			else if(dungeon.room().CanMove(0))
-			{
-				dungeon.ChangePlayerLocation(-2);
-				flagMove = true;
-			}
-			if(flagMove.equals(true))
-			{
-				return "Great, you moved towards the " + direction;
-			}
-			else
-			{
-				return "You can't go that way";
-			}
+				dungeon.move(this);
+				return "Great, you moved to a new room";
 		}
 		else
 		{
@@ -251,6 +224,18 @@ public class Player {
 	public String playerclass()
 	{
 		return playerclass;
+	}
+	
+	public void increaseExp(int x)
+	{
+		this.exp = this.exp + x;
+		if(this.exp + x >= 25)
+		{
+			this.lvl = this.lvl + 1;
+			this.exp = this.exp - 25;
+			Scene.playScene(Scene.levelUpScene);
+		}
+		
 	}
 
 }

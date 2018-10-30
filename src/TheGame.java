@@ -8,181 +8,47 @@ public class TheGame {
 
 	public static void main(String[] args)
 	{
+		Boolean isCommandLine = true; //Use this to define type of app
+		
 		Player player = new Player("Filthy CS Student (you)","noob");
+
+		Room room = new Room(player,1);
 		
-		Room[] thisDick = new Room[9];
-		thisDick[0] = new Room(player,0,1);
-		thisDick[1] = new Room(player,1,1);
-		thisDick[2] = new Room(player,2,1);
-		thisDick[3] = new Room(player,3,1);
-		thisDick[4] = new Room(player,4,1);
-		thisDick[5] = new Room(player,5,1);
-		thisDick[6] = new Room(player,6,1);
-		thisDick[7] = new Room(player,7,1);
-		thisDick[8] = new Room(player,8,1);
-		Dungeon TheDungeon = new Dungeon(thisDick);
-		
+		Dungeon TheDungeon = new Dungeon(room);
 		Scene sceneHandler = new Scene();
-
-		out.println("#####################################");
-		out.println("#        REALM OF THE MAD TOM       #");
-		out.println("#       (C) 2018 Version 1.0.0      #");
-		out.println("#####################################");
-
-		Characters.mc.changeName("Filthy CS Student (you)");
-		sceneHandler.playScene(sceneHandler.introSceneA);
-		Characters.tom.changeName("The Mad Tom");
-		sceneHandler.playScene(sceneHandler.introSceneB);
-		Characters.narrator.changeName("Andy");
-
-        Scanner in = new Scanner(System.in);
-		while(true)
-		{
-			if (player.isDead)
+		
+		if (isCommandLine) {
+			CommandInterpreter cmd = new CommandInterpreter();
+			out.println("#####################################");
+			out.println("#        REALM OF THE MAD TOM       #");
+			out.println("#       (C) 2018 Version 1.0.0      #");
+			out.println("#####################################");
+	
+			Characters.mc.changeName("Filthy CS Student (you)");
+			sceneHandler.playScene(sceneHandler.introSceneA);
+			Characters.tom.changeName("The Mad Tom");
+			sceneHandler.playScene(sceneHandler.introSceneB);
+			Characters.narrator.changeName("Andy");
+			cmd.interpret("help", player, TheDungeon);
+	
+	        Scanner in = new Scanner(System.in);
+			while(true)
 			{
-				sceneHandler.playScene(sceneHandler.yaDieScene);
-				break;
-			}
-			
-			boolean ExitFlag = false;
-			out.println(Characters.narrator.say("What should we do?\n$> "));
-			String input = in.nextLine();
-			
-			if(input.equalsIgnoreCase("pick up"))
-			{
-				out.println(Characters.narrator.say("What item do you want to pick up?"));
-				input = in.nextLine();
-				if (input.equals(""))
+				if (player.isDead)
 				{
-					out.println(Characters.narrator.say("Ah, got it. Stop picking up air, you weirdo."));
-				}
-				else
-				{
-					System.out.println(player.manage_inventory("pick up", input,TheDungeon));
+					sceneHandler.playScene(sceneHandler.yaDieScene);
+					break;
 				}
 				
+				out.println(Characters.narrator.say("What should we do?\n$> "));
+				String command = in.nextLine();
+				cmd.interpret(command, player, TheDungeon);
+				
 			}
-			
-			else if (input.equalsIgnoreCase("drop"))
-			{
-				out.println(Characters.narrator.say("What item do you want to drop?"));
-				input = in.nextLine();
-				System.out.println(player.manage_inventory("drop", input,TheDungeon));
-			}
-			
-			else if (input.equalsIgnoreCase("equip"))
-			{
-				out.println(Characters.narrator.say("What item do you want to equip?"));
-				input = in.nextLine();
-				System.out.println(player.equip(input));
-			}
-			
-			else if(input.equalsIgnoreCase("hand"))
-			{
-				out.println(player.hand().name() + Integer.toString(player.hand().getLevel()));
-			}
-			
-			else if(input.equalsIgnoreCase("info"))
-			{
-				out.println(Characters.narrator.say("Uh, let's see here..."));
-				out.println(player.info(TheDungeon));
-			}
-			else if(input.equalsIgnoreCase("hand"))
-			{
-				out.println(player.hand());
-			}
-			
-			else if(input.equalsIgnoreCase("attack"))
-			{
-				int damage[] = new int[2];
-				damage = player.attack(TheDungeon);
-				System.out.println("You did " + damage[0] + " damage to the mob");
-				System.out.println("The Mob did " + damage[1] + " damage to you");
-			}
-			
-			else if(input.equalsIgnoreCase("move"))
-			{
-				out.println(Characters.narrator.say("Okay, so where are we going? We can go North, South, East, or West."));
-				out.println(Characters.narrator.say("No pressure or anything, but I'm letting you do the navigation."));
-				input = in.nextLine();
-				System.out.println(player.move(input,TheDungeon));
-			}
-			
-			else if(input.equalsIgnoreCase("exit"))
-			{
-				ExitFlag = player.exit();
-				if(ExitFlag==true)
-				{
-					break;
-				}
-			}
-
-			else if (input.equalsIgnoreCase("clear"))
-			{
-				out.println("\f");
-				out.println(Characters.narrator.say("Alright, I cleared it up."));
-			}
-
-			else if (input.equalsIgnoreCase("me"))
-			{
-				out.println(Characters.narrator.say("Here's all I know about you:"));
-				out.println("Name: " + player.name());
-				out.println("Level: " + player.level());
-				out.println("Health: " + player.health());
-				out.println("Attack: " + player.attackValue());
-				out.println("Defense: " + player.defense());
-			}
-
-			else if (input.equalsIgnoreCase("mob"))
-			{
-				if (TheDungeon.room().MobAlive())
-				{
-					out.println(Characters.narrator.say("Here's what I know about the mob:"));
-					out.println("Level: " + Integer.toString(TheDungeon.room().mob().level()));
-					out.println("Health: " + Integer.toString(TheDungeon.room().mob().health()));
-				}
-
-				else
-				{
-					out.println(Characters.narrator.say("Welp, looks like there's no mob here..."));
-				}
-			}
-
-			else if (input.equalsIgnoreCase("fuck"))
-			{
-				out.println(Characters.narrator.say("E-Eh? That's not nice..."));
-				out.println(Characters.narrator.say("W-ho?"));
-
-				String who = in.nextLine();
-
-				if (who.equalsIgnoreCase("mob"))
-				{
-					sceneHandler.playScene(sceneHandler.fuckMobDieScene);
-					break;
-				}
-				else if (who.equalsIgnoreCase("you"))
-				{
-					out.println(Characters.narrator.say("Uwaa~!"));
-				}
-				else 
-				{
-					out.println(Characters.narrator.say("That's weird. How about no?"));
-				}
-
-			}
-
-			else
-			{
-				out.println(Characters.narrator.say("Eh? I-I don't understand what you mean."));
-				out.println(Characters.narrator.say("Could you try a valid command next time?"));
-			}
-			if (ExitFlag == true)
-			{
-				break;
-			}
+		} else {
+			//Add GUI parts here
+			GUIInterpreter gui = new GUIInterpreter();
 		}
-
 	}
-	
 
 }

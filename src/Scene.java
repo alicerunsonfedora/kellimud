@@ -62,6 +62,11 @@ public class Scene
         Characters.narrator.say("Congrats, you killed the mob!"),
         Characters.narrator.say("Yaay~!")
     };
+    
+    static String[] levelUpScene = 
+    {
+    	Characters.narrator.say("Congrats, you leveled up!")
+    };
 
     static void playScene(String[] scene)
     {
