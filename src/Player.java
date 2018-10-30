@@ -18,7 +18,7 @@ public class Player {
 		name = aname;
 		playerclass = aclass;
 		lvl = 1;
-		health = 10;
+		health = 42;
 		attack = 1;
 		defense = 0;
 		exp = 0;

@@ -9,6 +9,7 @@ public class Room {
 	private Boolean monsterInRoom;
 	private Boolean[] doors = new Boolean[4];
 	private Mob mob;
+	private Potion potion;
 	Random rand = new Random();
 	/**
 	 * Instantiate the object
@@ -28,6 +29,8 @@ public class Room {
 		{
 			mob = new Mob(MobLevel);
 		}
+		int x = rand.nextInt(12) + 6;
+		potion = new Potion(x,player);
 		
 	}
 
