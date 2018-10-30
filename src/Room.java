@@ -15,7 +15,6 @@ public class Room {
 	 */
 	public Room(Player player, int MobLevel) {
 		monsterInRoom = true;
-		mob = new Mob(MobLevel);
 		int  n = rand.nextInt(2) + 1;
 		if(n==1)
 		{
@@ -24,6 +23,10 @@ public class Room {
 		else
 		{
 			loot = new Armor(player.level() + 1);
+		}
+		if(rand.nextInt(2)+1 == 1)
+		{
+			mob = new Mob(MobLevel);
 		}
 		
 	}
