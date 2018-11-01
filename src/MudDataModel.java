@@ -24,22 +24,27 @@ public class MudDataModel extends Observable {
 	
 	public void healPlayerHealth(int amount) {
 		thisPlayer.healHealth(amount);
+		notifyObservers();
 	}
 	
 	public void upgradePlayerExperience(int amount) {
 		thisPlayer.increaseExp(amount);
+		notifyObservers();
 	}
 	
 	public void setPlayerHealth(int amount) {
 		thisPlayer.setHealth(amount);
+		notifyObservers();
 	}
 	
 	public void setPlayerExperience(int amount) {
 		thisPlayer.setExperience(amount);
+		notifyObservers();
 	}
 	
 	public void setPlayerLevel(int amount) {
 		thisPlayer.setLevel(amount);
+		notifyObservers();
 	}
 	
 	
@@ -58,6 +63,7 @@ public class MudDataModel extends Observable {
 	
 	public void setMobHealth(int amount) {
 		thisMob.setHealth(amount);
+		notifyObservers();
 	}
 	
 	
