@@ -237,5 +237,17 @@ public class Player {
 		}
 		
 	}
+	
+	public void setHealth(int amount) {
+		health = amount;
+	}
+	
+	public void setExperience(int amount) {
+		exp = amount;
+	}
+	
+	public void setLevel(int amount) {
+		level = amount;
+	}
 
 }

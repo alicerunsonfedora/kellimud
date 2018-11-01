@@ -64,15 +64,8 @@ public class Mob {
 	{
 		return lvl;
 	}
+	
+	public void setHealth(int amount) {
+		health = amount;
+	}
 }
-
-/*
- _________________________________________
-< Excuse me, what the fuck are you doing? >
- -----------------------------------------
-        \   ^__^
-         \  (oo)\_______
-            (__)\       )\/\
-                ||----w |
-                ||     ||
- */
