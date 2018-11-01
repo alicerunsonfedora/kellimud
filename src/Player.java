@@ -247,7 +247,7 @@ public class Player {
 	}
 	
 	public void setLevel(int amount) {
-		level = amount;
+		lvl = amount;
 	}
 
 }
