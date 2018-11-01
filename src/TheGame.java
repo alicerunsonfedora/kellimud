@@ -1,4 +1,7 @@
 import java.util.Scanner;
+
+import javax.swing.JFrame;
+
 import java.io.Console;
 import static java.lang.System.out;
 public class TheGame {
@@ -8,7 +11,7 @@ public class TheGame {
 
 	public static void main(String[] args)
 	{
-		Boolean isCommandLine = true; //Use this to define type of app
+		Boolean isCommandLine = false; //Use this to define type of app
 		
 		Player player = new Player("Filthy CS Student (you)","noob");
 
@@ -47,7 +50,13 @@ public class TheGame {
 			}
 		} else {
 			//Add GUI parts here
-			GUIInterpreter gui = new GUIInterpreter();
+			//GUIInterpreter gui = new GUIInterpreter();
+			MainWindows app = new MainWindows();
+			app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			app.setSize(1280, 720);
+			app.setTitle("REALM OF THE MAD TOM");
+			app.setResizable(false);
+			app.setVisible(true);
 		}
 	}
 
