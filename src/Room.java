@@ -8,14 +8,14 @@ public class Room {
 	private Item loot;
 	private Boolean monsterInRoom;
 	private Boolean[] doors = new Boolean[4];
-	private Mob mob;
+	private Mob mob = new Mob(0);
 	private Potion potion;
 	Random rand = new Random();
 	/**
 	 * Instantiate the object
 	 */
-	public Room(Player player, int MobLevel) {
-		monsterInRoom = true;
+	public Room(Player player, int MobLevel) 
+	{
 		int  n = rand.nextInt(2) + 1;
 		if(n==1)
 		{
@@ -28,6 +28,11 @@ public class Room {
 		if(rand.nextInt(2)+1 == 1)
 		{
 			mob = new Mob(MobLevel);
+			monsterInRoom = true;
+		}
+		else
+		{
+			monsterInRoom = false;
 		}
 		int x = rand.nextInt(12) + 6;
 		potion = new Potion(x,player);
@@ -72,11 +77,16 @@ public class Room {
 	
 	public Boolean MobAlive()
 	{
-		if(mob.dead())
+		if(this.mob.dead())
 		{
 			monsterInRoom = false;
 		}
-		return this.monsterInRoom;
+		return monsterInRoom;
+	}
+	
+	public void MobDied()
+	{
+		monsterInRoom = false;
 	}
 	
 	public Mob mob()
