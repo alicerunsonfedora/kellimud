@@ -81,12 +81,12 @@ public class Player {
 	public int[] attack(Dungeon dungeon)
 	{
 		int damage[] = new int[2];
-		damage[1] = dungeon.room().mob().attack(this);
+		damage[1] = dungeon.room().mob().attack(this,dungeon);
 		damage[0] = this.attack;
 		return damage;
 	}
 
-	public int takeDamage(int amount)
+	public int takeDamage(int amount, Dungeon dungeon)
 	{
 		this.health -= amount;
 		if (this.health <= 0)

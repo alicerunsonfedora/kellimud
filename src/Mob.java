@@ -6,27 +6,27 @@ public class Mob {
 
 	public Mob(int level) 
 	{
-		lvl = 1;
+		lvl = level;
 		health = 10*lvl;
 		attack = lvl;
 		defense = lvl;
 	}
 	
-	public int attack(Player player)
+	public int attack(Player player, Dungeon dungeon)
 	{
 		Random damagePoint = new Random();
-		int attackLevel = damagePoint.nextInt(2);
-		player.takeDamage(attackLevel);
-		this.takeDamage(player.attackValue(),player);
+		int attackLevel = damagePoint.nextInt(attack);
+		player.takeDamage(attackLevel,dungeon);
+		this.takeDamage(player.attackValue(),player,dungeon);
 		return attackLevel;
 	}
 	
-	public int takeDamage(int amount,Player player)
+	public int takeDamage(int amount,Player player,Dungeon dungeon)
 	{
 		this.health -= amount;
 		if (this.health <= 0)
 		{
-			this.die(player);
+			this.die(player,dungeon);
 			return 0;
 		}
 		else
@@ -35,9 +35,10 @@ public class Mob {
 		}
 	}
 
-	public void die(Player player)
+	public void die(Player player,Dungeon dungeon)
 	{
 		Scene.playScene(Scene.mobDieScene);
+		dungeon.room().MobDied();
 		player.increaseExp(5);
 	}
 	
