@@ -6,6 +6,16 @@ public class MainContent extends JPanel {
 	private Image background = Toolkit.getDefaultToolkit().createImage("src/res/bg.png");
 	public MainContent() 
 	{
+		this.setLayout(new BorderLayout());
+		PlayerPanel g = new PlayerPanel();
+		MobPanel g1 = new MobPanel();
+		JLabel exit = new JLabel("");
+		this.setOpaque(false);
+		g.setOpaque(false);
+		g1.setOpaque(false);
+		this.add(g,BorderLayout.LINE_START);
+		this.add(exit,BorderLayout.CENTER);
+		this.add(g1,BorderLayout.LINE_END);
 
 	}
 	
