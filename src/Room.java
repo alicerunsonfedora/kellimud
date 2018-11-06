@@ -5,10 +5,10 @@ import java.util.Random;
  * @author Marquis Kurt
  */
 public class Room {
-	private Item loot;
+	private static Item loot;
 	private Boolean monsterInRoom;
 	private Boolean[] doors = new Boolean[4];
-	private Mob mob = new Mob(0);
+	private static Mob mob = new Mob(0);
 	private Potion potion;
 	Random rand = new Random();
 	/**
@@ -47,7 +47,7 @@ public class Room {
 		return "The mobs are here.";
 	}
 	
-	public Item getItem()
+	public static Item getItem()
 	{
 		return loot;
 	}
@@ -89,7 +89,7 @@ public class Room {
 		monsterInRoom = false;
 	}
 	
-	public Mob mob()
+	public static Mob mob()
 	{
 		return mob;
 	}

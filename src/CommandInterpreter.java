@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class CommandInterpreter {
 		
-	public void interpret(String input, Player player, Dungeon TheDungeon) {
+	public static void interpret(String input, Player player, Dungeon TheDungeon) {
 		Scanner in = new Scanner(System.in);
 		if(input.equalsIgnoreCase("pick up"))
 		{
@@ -30,9 +30,18 @@ public class CommandInterpreter {
 		
 		else if (input.equalsIgnoreCase("equip"))
 		{
-			out.println(Characters.narrator.say("What item do you want to equip?"));
-			input = in.nextLine();
-			System.out.println(player.equip(input));
+			//out.println(Characters.narrator.say("What item do you want to equip?"));
+			//input = in.nextLine();
+			//if (input.equals(""))
+			//{
+			//	out.println(Characters.narrator.say("Ah, got it. Stop equiping up air, you weirdo."));
+			//}
+			//else
+			//{
+				player.manage_inventory("pick up", Room.getItem().name(),TheDungeon);
+			//}
+			//System.out.println(player.equip(input));
+			player.equip(Room.getItem().name());
 		}
 		
 		else if(input.equalsIgnoreCase("hand"))
@@ -52,15 +61,18 @@ public class CommandInterpreter {
 		
 		else if(input.equalsIgnoreCase("heal"))
 		{
-			System.out.println("You were healed by " + TheDungeon.UsePotion() + " health");
+			TheDungeon.UsePotion();
 		}
 		
 		else if(input.equalsIgnoreCase("attack"))
 		{
 			int damage[] = new int[2];
+			if(TheDungeon.room().MobAlive())
+			{
 			damage = player.attack(TheDungeon);
-			System.out.println("You did " + damage[0] + " damage to the mob");
-			System.out.println("The Mob did " + damage[1] + " damage to you");
+			}
+			//System.out.println("You did " + damage[0] + " damage to the mob");
+			//System.out.println("The Mob did " + damage[1] + " damage to you");
 		}
 		
 		else if(input.equalsIgnoreCase("move"))

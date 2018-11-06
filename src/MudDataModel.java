@@ -3,8 +3,7 @@ import java.util.Observable;
 public class MudDataModel extends Observable {
 	
 	private Player thisPlayer;
-	private Mob thisMob;
-	
+	private Dungeon thisDungeon;
 	
 	/*
 	 * GET/SET for PLAYER 
@@ -21,6 +20,29 @@ public class MudDataModel extends Observable {
 	public int getPlayerExperience() {
 		return thisPlayer.exp();
 	}
+	
+	public void attack()
+	{
+		int damage[] = new int[2];
+		if(thisDungeon.room().MobAlive())
+		{
+		damage = thisPlayer.attack(thisDungeon);
+		}
+        notifyObservers();
+	}
+	
+	public void heal()
+	{
+		thisDungeon.UsePotion();
+        notifyObservers();
+	}
+	public void equip()
+	{
+		thisPlayer.manage_inventory("pick up", thisDungeon.room().getItem().name(),thisDungeon);
+		thisPlayer.equip(thisDungeon.room().getItem().name());
+        notifyObservers();
+	}
+
 	
 	public void healPlayerHealth(int amount) {
 		thisPlayer.healHealth(amount);
@@ -53,23 +75,23 @@ public class MudDataModel extends Observable {
 	 */
 	
 	public int getMobHealth() {
-		return thisMob.health();
+		return 	thisDungeon.room().mob().health();
 	}
 	
 	public int getMobLevel() {
-		return thisMob.level();
+		return 	thisDungeon.room().mob().level();
 	}
 	
 	
 	public void setMobHealth(int amount) {
-		thisMob.setHealth(amount);
+		thisDungeon.room().mob().setHealth(amount);
 		notifyObservers();
 	}
 	
 	
 	// Constructor
-	public MudDataModel(Player player, Mob mob) {
+	public MudDataModel(Player player,Dungeon dungeon) {
 		thisPlayer = player;
-		thisMob = mob;
+		thisDungeon = dungeon;
 	}
 }

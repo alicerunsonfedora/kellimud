@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 import java.io.Console;
 import static java.lang.System.out;
@@ -8,16 +9,26 @@ public class TheGame {
 	public TheGame() {
 	
 	}
-
+	public static Player player()
+	{
+		return player;
+	}
+	
+	public static Dungeon dungeon()
+	{
+		return TheDungeon;
+	}
+	private static Player player = new Player("Filthy CS Student (you)","noob");
+	private static Room room = new Room(player,1);
+	private static Dungeon TheDungeon = new Dungeon(room);
+	private static MudDataModel observable = new MudDataModel(player,TheDungeon);
 	public static void main(String[] args)
 	{
 		Boolean isCommandLine = false; //Use this to define type of app
 		
-		Player player = new Player("Filthy CS Student (you)","noob");
 
-		Room room = new Room(player,1);
-		
-		Dungeon TheDungeon = new Dungeon(room);
+
+
 		Scene sceneHandler = new Scene();
 		
 		if (isCommandLine) {
@@ -57,7 +68,26 @@ public class TheGame {
 			app.setTitle("REALM OF THE MAD TOM");
 			app.setResizable(false);
 			app.setVisible(true);
+			
 		}
+
 	}
+	
+	public static MudDataModel observable()
+	{
+		return observable;
+	}
+	
+	public static void PlayerObserver(PlayerPanel g)
+	{
+		observable.addObserver(g);
+	}
+	
+	public static void MobObserver(MobPanel g)
+	{
+		observable.addObserver(g);
+	}
+	
+
 
 }

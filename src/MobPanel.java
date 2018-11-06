@@ -6,11 +6,13 @@ import java.util.Observable;
 public class MobPanel extends JPanel implements Observer {
 
 	private int CurrentHealth=10,MaxHealth=10;
+	private JLabel health = new JLabel("Mob Health " + Integer.toString(CurrentHealth) + "/" + Integer.toString(MaxHealth));
 	public MobPanel() 
 	{
     	super.setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
-    	JLabel health = new JLabel("Mob Health " + Integer.toString(CurrentHealth) + "/" + Integer.toString(MaxHealth));
+        CurrentHealth = Room.mob().health();
+        MaxHealth = Room.mob().level()*10;
         gbc.gridwidth= GridBagConstraints.REMAINDER;
         gbc.fill= gbc.HORIZONTAL;
         GridBagConstraints gc= new GridBagConstraints();
@@ -26,20 +28,23 @@ public class MobPanel extends JPanel implements Observer {
         health.setForeground(Color.white);
         health.setFont(new Font("Times",Font.PLAIN,25));
         super.add(health,gc);
+        TheGame.MobObserver(this);
+    	super.setBackground(Color.white);
 
 	}
 	
     public void paintComponent(Graphics g)
     {
-    	super.setBackground(Color.white);
-    	//super.setSize(100, 100);
-    	//super.setBounds(864, 8, 400, 150);
         super.paintComponent(g);
     }
     
     @Override
     public void update(Observable o, Object arg) {
-    	
+    	MudDataModel model = (MudDataModel) o;
+    	CurrentHealth = model.getMobHealth();
+    	MaxHealth = model.getMobLevel()*10;
+    	health.setText("Mob Health " + Integer.toString(CurrentHealth) + "/" + Integer.toString(MaxHealth));
+    	this.repaint();
     }
 
 }
