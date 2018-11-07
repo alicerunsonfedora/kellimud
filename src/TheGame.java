@@ -1,10 +1,13 @@
 import java.util.Scanner;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import java.io.Console;
 import static java.lang.System.out;
+
+import java.awt.BorderLayout;
 public class TheGame {
 	public TheGame() {
 	
@@ -68,6 +71,21 @@ public class TheGame {
 			app.setTitle("REALM OF THE MAD TOM");
 			app.setResizable(false);
 			app.setVisible(true);
+			observable.addObserver(app);
+			MainContent main = new MainContent();
+			main.setLayout(new BorderLayout());
+			PlayerPanel g = new PlayerPanel();
+			MobPanel g1 = new MobPanel();
+			JLabel exit = new JLabel("");
+			main.setOpaque(false);
+			g.setOpaque(false);
+			g1.setOpaque(false);
+			observable.addObserver(g);
+			observable.addObserver(g1);
+			main.add(g,BorderLayout.LINE_START);
+			main.add(exit,BorderLayout.CENTER);
+			main.add(g1,BorderLayout.LINE_END);
+			app.add(main);
 			
 		}
 
@@ -86,6 +104,11 @@ public class TheGame {
 	public static void MobObserver(MobPanel g)
 	{
 		observable.addObserver(g);
+	}
+	public static void MainObserver(MainContent g) 
+	{
+		observable.addObserver(g);
+		
 	}
 	
 
