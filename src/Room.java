@@ -98,4 +98,8 @@ public class Room {
 	{
 		return loot;
 	}
+
+	public Potion potionInRoom() {
+		return potion;
+	}
 }

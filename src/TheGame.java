@@ -65,27 +65,27 @@ public class TheGame {
 		} else {
 			//Add GUI parts here
 			//GUIInterpreter gui = new GUIInterpreter();
-			MainWindows app = new MainWindows();
+			MainWindows app = new MainWindows(observable);
 			app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			app.setSize(1280, 720);
 			app.setTitle("REALM OF THE MAD TOM");
 			app.setResizable(false);
 			app.setVisible(true);
-			observable.addObserver(app);
-			MainContent main = new MainContent();
-			main.setLayout(new BorderLayout());
-			PlayerPanel g = new PlayerPanel(observable);
-			MobPanel g1 = new MobPanel(observable);
-			JLabel exit = new JLabel("");
-			main.setOpaque(false);
-			g.setOpaque(false);
-			g1.setOpaque(false);
-			observable.addObserver(g);
-			observable.addObserver(g1);
-			main.add(g,BorderLayout.LINE_START);
-			main.add(exit,BorderLayout.CENTER);
-			main.add(g1,BorderLayout.LINE_END);
-			app.add(main);
+//			observable.addObserver(app);
+//			MainContent main = new MainContent();
+//			main.setLayout(new BorderLayout());
+//			PlayerPanel g = new PlayerPanel(observable);
+//			MobPanel g1 = new MobPanel(observable);
+//			JLabel exit = new JLabel("");
+//			main.setOpaque(false);
+//			g.setOpaque(false);
+//			g1.setOpaque(false);
+//			observable.addObserver(g);
+//			observable.addObserver(g1);
+//			main.add(g,BorderLayout.LINE_START);
+//			main.add(exit,BorderLayout.CENTER);
+//			main.add(g1,BorderLayout.LINE_END);
+//			app.add(main);
 			
 		}
 

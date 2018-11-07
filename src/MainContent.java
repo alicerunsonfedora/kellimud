@@ -7,12 +7,11 @@ import javax.swing.*;
 public class MainContent extends JPanel implements Observer {
 
 	private Image background = Toolkit.getDefaultToolkit().createImage("src/res/bg.png");
-	public MainContent() 
+	public MainContent(MudDataModel model)
 	{
-		/*
 		this.setLayout(new BorderLayout());
-		PlayerPanel g = new PlayerPanel();
-		MobPanel g1 = new MobPanel();
+		PlayerPanel g = new PlayerPanel(model);
+		MobPanel g1 = new MobPanel(model);
 		JLabel exit = new JLabel("");
 		this.setOpaque(false);
 		g.setOpaque(false);
@@ -21,7 +20,6 @@ public class MainContent extends JPanel implements Observer {
 		this.add(exit,BorderLayout.CENTER);
 		this.add(g1,BorderLayout.LINE_END);
 		TheGame.MainObserver(this);
-		*/
 	}
 	
     public void paintComponent(Graphics g)

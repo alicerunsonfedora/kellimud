@@ -1,4 +1,5 @@
 import java.util.Observable;
+import javax.swing.JOptionPane;
 
 public class MudDataModel extends Observable {
 	
@@ -42,13 +43,19 @@ public class MudDataModel extends Observable {
 	
 	public void heal()
 	{
-		thisDungeon.UsePotion();
-		setChanged();
-        notifyObservers();
+		if (thisDungeon.room().potionInRoom().thisPower() != 0) {
+			JOptionPane.showMessageDialog(null, "You healed up to " + thisDungeon.room().UsePotion() + " health points!", "Heal Successful", JOptionPane.INFORMATION_MESSAGE);
+			setChanged();
+			notifyObservers();
+		} else {
+			JOptionPane.showMessageDialog(null, "You already used the heal potion!", "Heal Error", JOptionPane.ERROR_MESSAGE);
+		}
+
 	}
 	public void equip()
 	{
 		thisPlayer.equip(thisDungeon.room().getLoot());
+		JOptionPane.showMessageDialog(null, "You equipped a/an " + thisDungeon.room().getLoot().name() + "!", "Equip Successful", JOptionPane.INFORMATION_MESSAGE);
 		setChanged();
         notifyObservers();
 	}
@@ -101,6 +108,10 @@ public class MudDataModel extends Observable {
 	public void setMobHealth(int amount) {
 		thisDungeon.room().mob().setHealth(amount);
 		notifyObservers();
+	}
+
+	public Dungeon getThisDungeon() {
+		return thisDungeon;
 	}
 	
 	

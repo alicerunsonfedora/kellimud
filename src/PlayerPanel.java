@@ -9,7 +9,7 @@ public class PlayerPanel extends JPanel implements Observer {
     private int CurrentHealth = 42;
     private JLabel health = new JLabel("Your Health " + Integer.toString(CurrentHealth) + "/42");
     private MudDataModel model;
-	public PlayerPanel(MudDataModel model) 
+	public PlayerPanel(MudDataModel model)
 	{
 		this.model= model;
 		//super.setSize(400,150);

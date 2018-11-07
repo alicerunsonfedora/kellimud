@@ -9,6 +9,10 @@ public class Potion extends Item {
 		power = 0;
 		return x;
 	}
+
+	public int thisPower() {
+		return power;
+	}
 	
 	public Potion(int effect, Player patient) {
 		super("Heal Potion", "Potion", effect);

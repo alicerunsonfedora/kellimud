@@ -54,7 +54,12 @@ public class MobPanel extends JPanel implements Observer {
     {
     	CurrentHealth = model.getMobHealth();
     	MaxHealth = model.getMobLevel()*10;
-    	health.setText("Mob Health " + Integer.toString(CurrentHealth) + "/" + Integer.toString(MaxHealth));
+    	if (model.getThisDungeon().room().MobAlive()) {
+            health.setText("Mob Health " + Integer.toString(CurrentHealth) + "/" + Integer.toString(MaxHealth));
+        } else {
+            health.setText("");
+        }
+
         super.paintComponent(g);
     }
     

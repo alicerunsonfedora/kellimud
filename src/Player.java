@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import static java.lang.System.out;
+import javax.swing.JOptionPane;
 
 public class Player {
     Scanner in = new Scanner(System.in);
@@ -144,6 +145,7 @@ public class Player {
 		}
 		else
 		{
+			JOptionPane.showMessageDialog(null, "You cannot leave now, there is a monster nearby.", "Leave Room Error", JOptionPane.ERROR_MESSAGE);
 			return "There is a mob in the room boyyyyy, where do you think you are going?";
 		}
 	}
