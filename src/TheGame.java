@@ -74,8 +74,8 @@ public class TheGame {
 			observable.addObserver(app);
 			MainContent main = new MainContent();
 			main.setLayout(new BorderLayout());
-			PlayerPanel g = new PlayerPanel();
-			MobPanel g1 = new MobPanel();
+			PlayerPanel g = new PlayerPanel(observable);
+			MobPanel g1 = new MobPanel(observable);
 			JLabel exit = new JLabel("");
 			main.setOpaque(false);
 			g.setOpaque(false);

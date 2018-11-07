@@ -41,7 +41,7 @@ public class CommandInterpreter {
 				player.manage_inventory("pick up", Room.getItem().name(),TheDungeon);
 			//}
 			//System.out.println(player.equip(input));
-			player.equip(Room.getItem().name());
+			//player.equip(Room.getItem().name());
 		}
 		
 		else if(input.equalsIgnoreCase("hand"))

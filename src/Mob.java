@@ -14,11 +14,9 @@ public class Mob {
 	
 	public int attack(Player player, Dungeon dungeon)
 	{
-		Random damagePoint = new Random();
-		int attackLevel = damagePoint.nextInt(attack);
-		player.takeDamage(attackLevel,dungeon);
+		player.takeDamage(attack,dungeon);
 		this.takeDamage(player.attackValue(),player,dungeon);
-		return attackLevel;
+		return attack;
 	}
 	
 	public int takeDamage(int amount,Player player,Dungeon dungeon)
@@ -37,7 +35,7 @@ public class Mob {
 
 	public void die(Player player,Dungeon dungeon)
 	{
-		Scene.playScene(Scene.mobDieScene);
+		//Scene.playScene(Scene.mobDieScene);
 		dungeon.room().MobDied();
 		player.increaseExp(5);
 	}

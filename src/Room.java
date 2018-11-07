@@ -93,4 +93,9 @@ public class Room {
 	{
 		return mob;
 	}
+
+	public Item getLoot() 
+	{
+		return loot;
+	}
 }

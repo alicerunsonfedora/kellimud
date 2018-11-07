@@ -125,7 +125,7 @@ public class Player {
 			}
 			else if(input.equalsIgnoreCase("no"))
 			{
-				Scene.playScene(Scene.confirmGameResume);
+				//Scene.playScene(Scene.confirmGameResume);
 				return false;
 			}
 			else
@@ -148,34 +148,19 @@ public class Player {
 		}
 	}
 	
-	public String equip(String item)
+	public void equip(Item item)
 	{
-		int i;
-		Item temp = new NullItem();
-		for(i=9;i>=0;i--)
+		if(item.name().equalsIgnoreCase("Sword"))
 		{
-			if(backpack[i].name().equalsIgnoreCase(item))
-			{
-				temp = backpack[i];
-				backpack[i] = backpack[flag-1];
-				backpack[flag-1] = temp;
-				backpack[flag-1] = new NullItem();
-				flag = flag - 1;
-				break;
-			}
-		}
-		if(temp.name().equalsIgnoreCase("Sword"))
-		{
-			hand = temp;
-			this.attack = 1 + temp.getLevel();
+			hand = item;
+			this.attack = 1 + item.getLevel();
 		}
 		else
 		{
-			armor = temp;
-			this.defense = temp.getLevel();
+			armor = item;
+			this.defense = item.getLevel();
 		}
-		
-		return "You just equipped " + temp.name();
+
 	}
 	public String info(Dungeon dungeon)
 	{
@@ -233,7 +218,7 @@ public class Player {
 		{
 			this.lvl = this.lvl + 1;
 			this.exp = this.exp - 25;
-			Scene.playScene(Scene.levelUpScene);
+			//Scene.playScene(Scene.levelUpScene);
 		}
 		
 	}

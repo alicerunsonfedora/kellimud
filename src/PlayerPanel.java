@@ -8,8 +8,10 @@ public class PlayerPanel extends JPanel implements Observer {
 
     private int CurrentHealth = 42;
     private JLabel health = new JLabel("Your Health " + Integer.toString(CurrentHealth) + "/42");
-	public PlayerPanel() 
+    private MudDataModel model;
+	public PlayerPanel(MudDataModel model) 
 	{
+		this.model= model;
 		//super.setSize(400,150);
     	//super.setBounds(8, 8, 400, 150);
     	super.setLayout(new GridBagLayout());
@@ -68,8 +70,8 @@ public class PlayerPanel extends JPanel implements Observer {
 	
     public void paintComponent(Graphics g)
     {
-    	CurrentHealth = TheGame.observable().getPlayerHealth();
-        health = new JLabel("Your Health " + Integer.toString(CurrentHealth) + "/42");
+    	CurrentHealth = model.getPlayerHealth();
+        health.setText("Your Health " + Integer.toString(CurrentHealth) + "/42");
         super.paintComponent(g);
     }
     

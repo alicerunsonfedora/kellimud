@@ -23,49 +23,64 @@ public class MudDataModel extends Observable {
 	
 	public void attack()
 	{
+		int x;
 		int damage[] = new int[2];
 		if(thisDungeon.room().MobAlive())
 		{
 		damage = thisPlayer.attack(thisDungeon);
 		}
+		setChanged();
+        notifyObservers();
+	}
+	
+	public void move()
+	{
+		thisPlayer.move(thisDungeon);
+		setChanged();
         notifyObservers();
 	}
 	
 	public void heal()
 	{
 		thisDungeon.UsePotion();
+		setChanged();
         notifyObservers();
 	}
 	public void equip()
 	{
-		thisPlayer.manage_inventory("pick up", thisDungeon.room().getItem().name(),thisDungeon);
-		thisPlayer.equip(thisDungeon.room().getItem().name());
+		thisPlayer.equip(thisDungeon.room().getLoot());
+		setChanged();
         notifyObservers();
 	}
 
 	
 	public void healPlayerHealth(int amount) {
 		thisPlayer.healHealth(amount);
+		setChanged();
 		notifyObservers();
 	}
 	
 	public void upgradePlayerExperience(int amount) {
 		thisPlayer.increaseExp(amount);
+		setChanged();
 		notifyObservers();
 	}
 	
 	public void setPlayerHealth(int amount) {
 		thisPlayer.setHealth(amount);
+		setChanged();
 		notifyObservers();
 	}
 	
 	public void setPlayerExperience(int amount) {
 		thisPlayer.setExperience(amount);
+		setChanged();
 		notifyObservers();
 	}
 	
 	public void setPlayerLevel(int amount) {
 		thisPlayer.setLevel(amount);
+		setChanged();
 		notifyObservers();
 	}
 	
