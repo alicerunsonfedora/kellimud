@@ -8,43 +8,57 @@ import java.util.Observable;
 
 public class MobPanel extends JPanel implements Observer {
 
-	private int CurrentHealth=10,MaxHealth=10;
+	private int CurrentHealth, MaxHealth;
 	private JLabel health = new JLabel("Mob Health " + Integer.toString(CurrentHealth) + "/" + Integer.toString(MaxHealth));
 	private MudDataModel model;
+
+	private JButton leaveButton;
+
+	private GridBagConstraints viewConstraints;
+
+	Icon leaveIcon;
+
 	public MobPanel(MudDataModel model)
 	{
 		this.model = model;
+		leaveIcon = new ImageIcon("src/res/exit.png");
+
     	super.setLayout(new GridBagLayout());
-        GridBagConstraints gbc = new GridBagConstraints();
+        viewConstraints = new GridBagConstraints();
         CurrentHealth = Room.mob().health();
         MaxHealth = Room.mob().level()*10;
-        gbc.gridwidth= GridBagConstraints.REMAINDER;
-        gbc.fill= gbc.HORIZONTAL;
-        GridBagConstraints gc= new GridBagConstraints();
-         
-        gc.insets = new Insets(6, 6, 6, 6);
-        gc.anchor = GridBagConstraints.NORTH;
-        gc.weightx = 0.5;
-        gc.weighty = 0.5;
+        viewConstraints.gridwidth= GridBagConstraints.REMAINDER;
+        viewConstraints.fill= GridBagConstraints.HORIZONTAL;
+
+        viewConstraints.insets = new Insets(16, 6, 6, 16);
+        viewConstraints.anchor = GridBagConstraints.NORTH;
+        viewConstraints.weightx = 0.5;
+        viewConstraints.weighty = 0.5;
  
-        gc.gridx = 0;
-        gc.gridy = 0;
-        health.setMinimumSize(new Dimension(130,30));
+        viewConstraints.gridx = 0;
+        viewConstraints.gridy = 0;
+
+        health.setMinimumSize(new Dimension(64,32));
         health.setForeground(Color.white);
-        health.setFont(new Font("Times",Font.PLAIN,25));
-        JButton button2 = new JButton("Move");
-        button2.addActionListener(new ActionListener() {
+        health.setFont(new Font("Helvetica Neue",Font.PLAIN,25));
+        super.add(health,viewConstraints);
+
+        leaveButton = new JButton("");
+        leaveButton.setIcon(leaveIcon);
+        leaveButton.addActionListener(new ActionListener() {
             
             public void actionPerformed(ActionEvent evt) {
                TheGame.observable().move();
             }
          });
-        button2.setMinimumSize(new Dimension(130,30));
-        button2.setForeground(Color.white);
-        button2.setFont(new Font("Times",Font.PLAIN,25));
-        super.add(health,gc);
-        gc.gridy = 1;
-        super.add(button2, gc);
+        leaveButton.setMinimumSize(new Dimension(64,32));
+        leaveButton.setMaximumSize(new Dimension(64,32));
+        leaveButton.setPreferredSize(new Dimension(64,32));
+
+
+        viewConstraints.gridy = 1;
+        viewConstraints.insets = new Insets(16, 6, 6, 16);
+        super.add(leaveButton, viewConstraints);
         TheGame.MobObserver(this);
     	super.setBackground(Color.white);
 

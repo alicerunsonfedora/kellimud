@@ -35,6 +35,8 @@ public class Player {
 	public String die()
 	{
 		isDead = true;
+		JOptionPane.showMessageDialog(null, "You died!", "Game Over", JOptionPane.ERROR_MESSAGE);
+		System.exit(0);
 		return "Ya die! Ya die! Ya die! Ya die!";
 	}
 	
@@ -221,6 +223,7 @@ public class Player {
 			this.lvl = this.lvl + 1;
 			this.exp = this.exp - 25;
 			//Scene.playScene(Scene.levelUpScene);
+			JOptionPane.showMessageDialog(null, "Congrats! You're now at level " + this.lvl + "!", "Level Up!", JOptionPane.INFORMATION_MESSAGE);
 		}
 		
 	}

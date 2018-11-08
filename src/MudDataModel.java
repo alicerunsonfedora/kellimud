@@ -28,10 +28,13 @@ public class MudDataModel extends Observable {
 		int damage[] = new int[2];
 		if(thisDungeon.room().MobAlive())
 		{
-		damage = thisPlayer.attack(thisDungeon);
+			damage = thisPlayer.attack(thisDungeon);
+			setChanged();
+			notifyObservers();
+		} else {
+			JOptionPane.showMessageDialog(null, "Hey! You did nothing!", "Attack Error", JOptionPane.ERROR_MESSAGE);
 		}
-		setChanged();
-        notifyObservers();
+
 	}
 	
 	public void move()
@@ -87,6 +90,9 @@ public class MudDataModel extends Observable {
 	
 	public void setPlayerLevel(int amount) {
 		thisPlayer.setLevel(amount);
+		if (thisPlayer.health() <= 0) {
+			thisPlayer.die();
+		}
 		setChanged();
 		notifyObservers();
 	}
