@@ -133,6 +133,8 @@ public class PlayerPanel extends JPanel implements Observer {
     	CurrentHealth = model.getPlayerHealth();
     	if (CurrentHealth <= 10) {
     	    health.setForeground(Color.red);
+        } else {
+    	    health.setForeground(Color.white);
         }
         health.setText("Your Health " + Integer.toString(CurrentHealth) + "/42");
         super.paintComponent(g);
