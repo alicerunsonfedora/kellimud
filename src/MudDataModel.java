@@ -41,8 +41,9 @@ public class MudDataModel extends Observable {
 	{
 		thisPlayer.move(thisDungeon);
 		JOptionPane.showMessageDialog(null, "Moved to new room successfully!", "New Room", JOptionPane.INFORMATION_MESSAGE);
+		Boolean didMove = true;
 		setChanged();
-        notifyObservers();
+        notifyObservers(didMove);
 	}
 	
 	public void heal()
