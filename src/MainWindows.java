@@ -5,9 +5,9 @@ import java.util.Observer;
 import javax.swing.*;
 public class MainWindows extends JFrame implements Observer {
 
-	public MainWindows(MudDataModel model)
+	public MainWindows(MudDataModel model,Player player)
 	{
-		MainContent panel = new MainContent(model);
+		MainContent panel = new MainContent(model,player);
 		this.add(panel);
 	}
 

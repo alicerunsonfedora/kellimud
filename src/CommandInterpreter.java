@@ -61,7 +61,7 @@ public class CommandInterpreter {
 		
 		else if(input.equalsIgnoreCase("heal"))
 		{
-			TheDungeon.UsePotion();
+			TheDungeon.UsePotion(player);
 		}
 		
 		else if(input.equalsIgnoreCase("attack"))

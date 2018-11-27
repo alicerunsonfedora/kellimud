@@ -1,10 +1,9 @@
 public class Potion extends Item {
 	
-	private Player myPatient;
 	private int power;
 	
-	public int healPatient() {
-		myPatient.healHealth(power);
+	public int healPatient(Player player) {
+		player.healHealth(power);
 		int x = power;
 		power = 0;
 		return x;
@@ -16,7 +15,6 @@ public class Potion extends Item {
 	
 	public Potion(int effect, Player patient) {
 		super("Heal Potion", "Potion", effect);
-		myPatient = patient;
 		power = effect;
 	}
 	
