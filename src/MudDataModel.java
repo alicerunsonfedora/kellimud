@@ -5,6 +5,7 @@ public class MudDataModel extends Observable {
 	
 	private Player thisPlayer;
 	private Dungeon thisDungeon;
+	public boolean shouldChangeBackground;
 	private Player thisPlayer2;
 	
 	/*
@@ -43,6 +44,7 @@ public class MudDataModel extends Observable {
 	{
 		thisPlayer.move(thisDungeon);
 		JOptionPane.showMessageDialog(null, "Moved to new room successfully!", "New Room", JOptionPane.INFORMATION_MESSAGE);
+		shouldChangeBackground = true;
 		setChanged();
         notifyObservers();
 		TheGame.observable(thisPlayer2).notif();
@@ -143,6 +145,7 @@ public class MudDataModel extends Observable {
 	public MudDataModel(Player player,Dungeon dungeon,Player player2) {
 		thisPlayer = player;
 		thisDungeon = dungeon;
+		shouldChangeBackground = false;
 		thisPlayer2 = player2;
 	}
 }

@@ -1,17 +1,22 @@
 import java.awt.*;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.Random;
 
 import javax.swing.*;
 
 public class MainContent extends JPanel implements Observer {
 
-	private Image background = Toolkit.getDefaultToolkit().createImage("src/res/bg.png");
+	private Image background;
+	private MudDataModel thisModel;
 	public MainContent(MudDataModel model,Player player)
 	{
+		changeBackground();
+
 		this.setLayout(new BorderLayout());
-		PlayerPanel g = new PlayerPanel(model,player);
-		MobPanel g1 = new MobPanel(model,player);
+		thisModel = model;
+		PlayerPanel g = new PlayerPanel(thisModel,player);
+		MobPanel g1 = new MobPanel(thisModel,player);
 		JLabel exit = new JLabel("");
 		this.setOpaque(false);
 		g.setOpaque(false);
@@ -28,10 +33,22 @@ public class MainContent extends JPanel implements Observer {
         g.drawImage(background,0,0,this);
     }
 
+    public void changeBackground() {
+		Random bgRandom = new Random();
+		int bgNumber = bgRandom.nextInt((4-1) + 1) + 1;
+
+		background = Toolkit.getDefaultToolkit().createImage("src/res/bg" + Integer.toString(bgNumber) + ".png");
+
+	}
+
 	@Override
 	public void update(Observable o, Object arg) 
 	{
-		this.repaint();	
+		if (thisModel.shouldChangeBackground) {
+			changeBackground();
+			thisModel.shouldChangeBackground = false;
+		}
+		this.repaint();
 	}
 
 }
