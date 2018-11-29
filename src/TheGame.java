@@ -22,9 +22,12 @@ public class TheGame {
 		return TheDungeon;
 	}
 	private static Player player = new Player("Filthy CS Student (you)","noob");
+	private static Player player2 = new Player("Filthy CS Student Number 2","noob");
 	private static Room room = new Room(player,1);
 	private static Dungeon TheDungeon = new Dungeon(room);
-	private static MudDataModel observable = new MudDataModel(player,TheDungeon);
+	private static MudDataModel observable = new MudDataModel(player,TheDungeon,player2);
+	private static MudDataModel observable2 = new MudDataModel(player2,TheDungeon,player);
+
 	public static void main(String[] args)
 	{
 		Boolean isCommandLine = false; //Use this to define type of app
@@ -65,12 +68,18 @@ public class TheGame {
 		} else {
 			//Add GUI parts here
 			//GUIInterpreter gui = new GUIInterpreter();
-			MainWindows app = new MainWindows(observable);
+			MainWindows app = new MainWindows(observable,player);
 			app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			app.setSize(1280, 720);
 			app.setTitle("REALM OF THE MAD TOM");
 			app.setResizable(false);
 			app.setVisible(true);
+			MainWindows app2 = new MainWindows(observable2,player2);
+			app2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			app2.setSize(1280, 720);
+			app2.setTitle("REALM OF THE MAD TOM2");
+			app2.setResizable(false);
+			app2.setVisible(true);
 //			observable.addObserver(app);
 //			MainContent main = new MainContent();
 //			main.setLayout(new BorderLayout());
@@ -91,24 +100,51 @@ public class TheGame {
 
 	}
 	
-	public static MudDataModel observable()
+	public static MudDataModel observable(Player player)
 	{
-		return observable;
+		if(player.equals(player2))
+		{
+			return observable2;
+		}
+		else
+		{
+			return observable;
+		}
 	}
 	
-	public static void PlayerObserver(PlayerPanel g)
+	public static void PlayerObserver(Player player,PlayerPanel g)
 	{
-		observable.addObserver(g);
+		if(player.equals(player2))
+		{
+			observable2.addObserver(g);
+		}
+		else
+		{
+			observable.addObserver(g);
+		}
 	}
 	
-	public static void MobObserver(MobPanel g)
+	public static void MobObserver(Player player,MobPanel g)
 	{
-		observable.addObserver(g);
+		if(player.equals(player2))
+		{
+			observable2.addObserver(g);
+		}
+		else
+		{
+			observable.addObserver(g);
+		}
 	}
-	public static void MainObserver(MainContent g) 
+	public static void MainObserver(Player player,MainContent g) 
 	{
-		observable.addObserver(g);
-		
+		if(player.equals(player2))
+		{
+			observable2.addObserver(g);
+		}
+		else
+		{
+			observable.addObserver(g);
+		}
 	}
 	
 

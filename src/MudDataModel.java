@@ -5,8 +5,8 @@ public class MudDataModel extends Observable {
 	
 	private Player thisPlayer;
 	private Dungeon thisDungeon;
-
 	public boolean shouldChangeBackground;
+	private Player thisPlayer2;
 	
 	/*
 	 * GET/SET for PLAYER 
@@ -33,6 +33,7 @@ public class MudDataModel extends Observable {
 			damage = thisPlayer.attack(thisDungeon);
 			setChanged();
 			notifyObservers();
+			TheGame.observable(thisPlayer2).notif();
 		} else {
 			JOptionPane.showMessageDialog(null, "Hey! You did nothing!", "Attack Error", JOptionPane.ERROR_MESSAGE);
 		}
@@ -46,14 +47,16 @@ public class MudDataModel extends Observable {
 		shouldChangeBackground = true;
 		setChanged();
         notifyObservers();
+		TheGame.observable(thisPlayer2).notif();
 	}
 	
 	public void heal()
 	{
 		if (thisDungeon.room().potionInRoom().thisPower() != 0) {
-			JOptionPane.showMessageDialog(null, "You healed up to " + thisDungeon.room().UsePotion() + " health points!", "Heal Successful", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(null, "You healed up to " + thisDungeon.room().UsePotion(thisPlayer) + " health points!", "Heal Successful", JOptionPane.INFORMATION_MESSAGE);
 			setChanged();
 			notifyObservers();
+			//TheGame.observable(thisPlayer2).notif();
 		} else {
 			JOptionPane.showMessageDialog(null, "You already used the heal potion!", "Heal Error", JOptionPane.ERROR_MESSAGE);
 		}
@@ -65,6 +68,7 @@ public class MudDataModel extends Observable {
 		JOptionPane.showMessageDialog(null, "You equipped a/an " + thisDungeon.room().getLoot().name() + "!", "Equip Successful", JOptionPane.INFORMATION_MESSAGE);
 		setChanged();
         notifyObservers();
+		TheGame.observable(thisPlayer2).notif();
 	}
 
 	
@@ -72,24 +76,28 @@ public class MudDataModel extends Observable {
 		thisPlayer.healHealth(amount);
 		setChanged();
 		notifyObservers();
+		TheGame.observable(thisPlayer2).notif();
 	}
 	
 	public void upgradePlayerExperience(int amount) {
 		thisPlayer.increaseExp(amount);
 		setChanged();
 		notifyObservers();
+		TheGame.observable(thisPlayer2).notif();
 	}
 	
 	public void setPlayerHealth(int amount) {
 		thisPlayer.setHealth(amount);
 		setChanged();
 		notifyObservers();
+		TheGame.observable(thisPlayer2).notif();
 	}
 	
 	public void setPlayerExperience(int amount) {
 		thisPlayer.setExperience(amount);
 		setChanged();
 		notifyObservers();
+		TheGame.observable(thisPlayer2).notif();
 	}
 	
 	public void setPlayerLevel(int amount) {
@@ -99,8 +107,14 @@ public class MudDataModel extends Observable {
 		}
 		setChanged();
 		notifyObservers();
+		TheGame.observable(thisPlayer2).notif();
 	}
 	
+	public void notif()
+	{
+		setChanged();
+		notifyObservers();
+	}
 	
 	/* 
 	 * GET/SET for MOB 
@@ -117,7 +131,9 @@ public class MudDataModel extends Observable {
 	
 	public void setMobHealth(int amount) {
 		thisDungeon.room().mob().setHealth(amount);
+		setChanged();
 		notifyObservers();
+		TheGame.observable(thisPlayer2).notif();
 	}
 
 	public Dungeon getThisDungeon() {
@@ -126,9 +142,10 @@ public class MudDataModel extends Observable {
 	
 	
 	// Constructor
-	public MudDataModel(Player player,Dungeon dungeon) {
+	public MudDataModel(Player player,Dungeon dungeon,Player player2) {
 		thisPlayer = player;
 		thisDungeon = dungeon;
 		shouldChangeBackground = false;
+		thisPlayer2 = player2;
 	}
 }

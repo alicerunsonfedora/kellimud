@@ -20,12 +20,10 @@ public class PlayerPanel extends JPanel implements Observer {
     Icon healIcon;
     Icon equipIcon;
 
-
     private MudDataModel model;
-	public PlayerPanel(MudDataModel model)
+	public PlayerPanel(MudDataModel model,Player player)
 	{
 		this.model= model;
-
         attackIcon = new ImageIcon("src/res/sword.png");
         healIcon = new ImageIcon("src/res/health.png");
         equipIcon = new ImageIcon("src/res/inventory.png");
@@ -54,7 +52,7 @@ public class PlayerPanel extends JPanel implements Observer {
         attackButton.addActionListener(new ActionListener() {
             
             public void actionPerformed(ActionEvent evt) {
-               TheGame.observable().attack();
+               TheGame.observable(player).attack();
             }
          });
         // Normally, we'd set text, but the icon replaces this.
@@ -68,7 +66,7 @@ public class PlayerPanel extends JPanel implements Observer {
         healButton.addActionListener(new ActionListener() {
             
             public void actionPerformed(ActionEvent evt) {
-               TheGame.observable().heal();               
+               TheGame.observable(player).heal();               
             }
          });
         super.add(healButton,gc);
@@ -86,7 +84,7 @@ public class PlayerPanel extends JPanel implements Observer {
         equipButton.addActionListener(new ActionListener() {
             
             public void actionPerformed(ActionEvent evt) {
-               TheGame.observable().equip();
+               TheGame.observable(player).equip();
             }
          });
         gc.gridx = 0;
@@ -125,7 +123,7 @@ public class PlayerPanel extends JPanel implements Observer {
 
         gc.gridy = 0;
         super.add(health, gc);
-        TheGame.PlayerObserver(this);
+        TheGame.PlayerObserver(player,this);
 	}
 	
     public void paintComponent(Graphics g)

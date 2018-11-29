@@ -9,16 +9,14 @@ public class MainContent extends JPanel implements Observer {
 
 	private Image background;
 	private MudDataModel thisModel;
-	public MainContent(MudDataModel model)
+	public MainContent(MudDataModel model,Player player)
 	{
 		changeBackground();
 
 		this.setLayout(new BorderLayout());
-
 		thisModel = model;
-
-		PlayerPanel g = new PlayerPanel(thisModel);
-		MobPanel g1 = new MobPanel(thisModel);
+		PlayerPanel g = new PlayerPanel(thisModel,player);
+		MobPanel g1 = new MobPanel(thisModel,player);
 		JLabel exit = new JLabel("");
 		this.setOpaque(false);
 		g.setOpaque(false);
@@ -26,7 +24,7 @@ public class MainContent extends JPanel implements Observer {
 		this.add(g,BorderLayout.LINE_START);
 		this.add(exit,BorderLayout.CENTER);
 		this.add(g1,BorderLayout.LINE_END);
-		TheGame.MainObserver(this);
+		TheGame.MainObserver(player,this);
 	}
 	
     public void paintComponent(Graphics g)
