@@ -18,7 +18,7 @@ public class MobPanel extends JPanel implements Observer {
 
 	Icon leaveIcon;
 
-	public MobPanel(MudDataModel model)
+	public MobPanel(MudDataModel model,Player player)
 	{
 		this.model = model;
 		leaveIcon = new ImageIcon("src/res/exit.png");
@@ -48,7 +48,7 @@ public class MobPanel extends JPanel implements Observer {
         leaveButton.addActionListener(new ActionListener() {
             
             public void actionPerformed(ActionEvent evt) {
-               TheGame.observable().move();
+               TheGame.observable(player).move();
             }
          });
         leaveButton.setMinimumSize(new Dimension(64,32));
@@ -59,7 +59,7 @@ public class MobPanel extends JPanel implements Observer {
         viewConstraints.gridy = 1;
         viewConstraints.insets = new Insets(16, 6, 6, 16);
         super.add(leaveButton, viewConstraints);
-        TheGame.MobObserver(this);
+        TheGame.MobObserver(player,this);
     	super.setBackground(Color.white);
 
 	}

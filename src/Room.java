@@ -70,9 +70,9 @@ public class Room {
 		return this.doors[x];
 	}
 	
-	public int UsePotion()
+	public int UsePotion(Player player)
 	{
-		return potion.healPatient();
+		return potion.healPatient(player);
 	}
 	
 	public Boolean MobAlive()

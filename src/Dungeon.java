@@ -42,9 +42,9 @@ public class Dungeon {
 		}
 		return null;
 	}
-	public int UsePotion()
+	public int UsePotion(Player player)
 	{
-		return room.UsePotion();
+		return room.UsePotion(player);
 	}
 	
 	public void ChangePlayerLocation(int x)
