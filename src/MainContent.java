@@ -8,6 +8,7 @@ import javax.swing.*;
 public class MainContent extends JPanel implements Observer {
 
 	private Image background;
+	private MudDataModel thisModel;
 	public MainContent(MudDataModel model)
 	{
 		Random bgRandom = new Random();
@@ -20,8 +21,11 @@ public class MainContent extends JPanel implements Observer {
 		background = Toolkit.getDefaultToolkit().createImage("src/res/bg" + Integer.toString(bgNumber) + ".png");
 
 		this.setLayout(new BorderLayout());
-		PlayerPanel g = new PlayerPanel(model);
-		MobPanel g1 = new MobPanel(model);
+
+		thisModel = model;
+
+		PlayerPanel g = new PlayerPanel(thisModel);
+		MobPanel g1 = new MobPanel(thisModel);
 		JLabel exit = new JLabel("");
 		this.setOpaque(false);
 		g.setOpaque(false);
@@ -53,9 +57,9 @@ public class MainContent extends JPanel implements Observer {
 	@Override
 	public void update(Observable o, Object arg) 
 	{
-		Boolean didMove = (Boolean) arg;
-		if (didMove) {
+		if (thisModel.shouldChangeBackground) {
 			changeBackground();
+			thisModel.shouldChangeBackground = false;
 		}
 		this.repaint();
 	}

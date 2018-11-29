@@ -5,6 +5,8 @@ public class MudDataModel extends Observable {
 	
 	private Player thisPlayer;
 	private Dungeon thisDungeon;
+
+	public boolean shouldChangeBackground;
 	
 	/*
 	 * GET/SET for PLAYER 
@@ -41,9 +43,9 @@ public class MudDataModel extends Observable {
 	{
 		thisPlayer.move(thisDungeon);
 		JOptionPane.showMessageDialog(null, "Moved to new room successfully!", "New Room", JOptionPane.INFORMATION_MESSAGE);
-		Boolean didMove = true;
+		shouldChangeBackground = true;
 		setChanged();
-        notifyObservers(didMove);
+        notifyObservers();
 	}
 	
 	public void heal()
@@ -127,5 +129,6 @@ public class MudDataModel extends Observable {
 	public MudDataModel(Player player,Dungeon dungeon) {
 		thisPlayer = player;
 		thisDungeon = dungeon;
+		shouldChangeBackground = false;
 	}
 }
