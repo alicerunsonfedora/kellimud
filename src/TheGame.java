@@ -27,6 +27,7 @@ public class TheGame {
 	private static Dungeon TheDungeon = new Dungeon(room);
 	private static MudDataModel observable = new MudDataModel(player,TheDungeon,player2);
 	private static MudDataModel observable2 = new MudDataModel(player2,TheDungeon,player);
+
 	public static void main(String[] args)
 	{
 		Boolean isCommandLine = false; //Use this to define type of app
@@ -73,10 +74,10 @@ public class TheGame {
 			app.setTitle("REALM OF THE MAD TOM");
 			app.setResizable(false);
 			app.setVisible(true);
-			MainWindows app2 = new MainWindows(observable,player2);
+			MainWindows app2 = new MainWindows(observable2,player2);
 			app2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			app2.setSize(1280, 720);
-			app2.setTitle("REALM OF THE MAD TOM");
+			app2.setTitle("REALM OF THE MAD TOM2");
 			app2.setResizable(false);
 			app2.setVisible(true);
 //			observable.addObserver(app);
