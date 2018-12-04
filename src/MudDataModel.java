@@ -1,4 +1,5 @@
 import java.util.Observable;
+import java.util.Random;
 import javax.swing.JOptionPane;
 
 public class MudDataModel extends Observable {
@@ -42,9 +43,15 @@ public class MudDataModel extends Observable {
 	
 	public void move()
 	{
-		thisPlayer.move(thisDungeon);
-		JOptionPane.showMessageDialog(null, "Moved to new room successfully!", "New Room", JOptionPane.INFORMATION_MESSAGE);
-		shouldChangeBackground = true;
+		boolean x;
+		x = thisPlayer.move(thisDungeon);
+		if(x == true)
+		{
+			Random bgRandom = new Random();
+			int bgNumber = bgRandom.nextInt((4 - 1) + 1) + 1;
+			TheGame.GetWindows(thisPlayer).GetContent().changeBackground(bgNumber);
+			TheGame.GetWindows(thisPlayer2).GetContent().changeBackground(bgNumber);
+		}
 		setChanged();
         notifyObservers();
 		TheGame.observable(thisPlayer2).notif();
