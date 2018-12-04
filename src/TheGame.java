@@ -27,13 +27,13 @@ public class TheGame {
 	private static Dungeon TheDungeon = new Dungeon(room);
 	private static MudDataModel observable = new MudDataModel(player,TheDungeon,player2);
 	private static MudDataModel observable2 = new MudDataModel(player2,TheDungeon,player);
+	private static PlayerDataManager pm = new PlayerDataManager(player);
 	private static MainWindows app,app2;
 	public static void main(String[] args)
 	{
 		Boolean isCommandLine = false; //Use this to define type of app
-		
 
-
+		pm.readFromFile();
 
 		Scene sceneHandler = new Scene();
 		
@@ -80,24 +80,20 @@ public class TheGame {
 			app2.setTitle("REALM OF THE MAD TOM2");
 			app2.setResizable(false);
 			app2.setVisible(true);
-//			observable.addObserver(app);
-//			MainContent main = new MainContent();
-//			main.setLayout(new BorderLayout());
-//			PlayerPanel g = new PlayerPanel(observable);
-//			MobPanel g1 = new MobPanel(observable);
-//			JLabel exit = new JLabel("");
-//			main.setOpaque(false);
-//			g.setOpaque(false);
-//			g1.setOpaque(false);
-//			observable.addObserver(g);
-//			observable.addObserver(g1);
-//			main.add(g,BorderLayout.LINE_START);
-//			main.add(exit,BorderLayout.CENTER);
-//			main.add(g1,BorderLayout.LINE_END);
-//			app.add(main);
 			
 		}
 
+		Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
+			public void run() {
+				pm.saveToFile();
+			}
+		}, "Shutdown-thread"));
+
+	}
+
+
+	public static PlayerDataManager pm() {
+		return pm;
 	}
 	
 	public static MudDataModel observable(Player player)

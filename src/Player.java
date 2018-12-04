@@ -241,4 +241,6 @@ public class Player {
 		lvl = amount;
 	}
 
+	public void setName(String newName) { name = newName; }
+
 }
