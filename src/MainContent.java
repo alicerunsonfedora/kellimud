@@ -11,7 +11,7 @@ public class MainContent extends JPanel implements Observer {
 	private MudDataModel thisModel;
 	public MainContent(MudDataModel model,Player player)
 	{
-		changeBackground();
+		changeBackground(1);
 
 		this.setLayout(new BorderLayout());
 		thisModel = model;
@@ -33,9 +33,7 @@ public class MainContent extends JPanel implements Observer {
         g.drawImage(background,0,0,this);
     }
 
-    public void changeBackground() {
-		Random bgRandom = new Random();
-		int bgNumber = bgRandom.nextInt((4-1) + 1) + 1;
+    public void changeBackground(int bgNumber) {
 
 		background = Toolkit.getDefaultToolkit().createImage("src/res/bg" + Integer.toString(bgNumber) + ".png");
 
@@ -44,10 +42,6 @@ public class MainContent extends JPanel implements Observer {
 	@Override
 	public void update(Observable o, Object arg) 
 	{
-		if (thisModel.shouldChangeBackground) {
-			changeBackground();
-			thisModel.shouldChangeBackground = false;
-		}
 		this.repaint();
 	}
 

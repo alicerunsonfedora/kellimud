@@ -138,17 +138,18 @@ public class Player {
 		}
 	}
 	
-	public String move(Dungeon dungeon)
+	public Boolean move(Dungeon dungeon)
 	{
 		if(!dungeon.room().MobAlive())
 		{
 				dungeon.move(this);
-				return "Great, you moved to a new room";
+				JOptionPane.showMessageDialog(null, "Moved to new room successfully!", "New Room", JOptionPane.INFORMATION_MESSAGE);
+				return true;
 		}
 		else
 		{
 			JOptionPane.showMessageDialog(null, "You cannot leave now, there is a monster nearby.", "Leave Room Error", JOptionPane.ERROR_MESSAGE);
-			return "There is a mob in the room boyyyyy, where do you think you are going?";
+			return false;
 		}
 	}
 	
