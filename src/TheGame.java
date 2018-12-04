@@ -27,7 +27,7 @@ public class TheGame {
 	private static Dungeon TheDungeon = new Dungeon(room);
 	private static MudDataModel observable = new MudDataModel(player,TheDungeon,player2);
 	private static MudDataModel observable2 = new MudDataModel(player2,TheDungeon,player);
-
+	private static MainWindows app,app2;
 	public static void main(String[] args)
 	{
 		Boolean isCommandLine = false; //Use this to define type of app
@@ -68,13 +68,13 @@ public class TheGame {
 		} else {
 			//Add GUI parts here
 			//GUIInterpreter gui = new GUIInterpreter();
-			MainWindows app = new MainWindows(observable,player);
+			app = new MainWindows(observable,player);
 			app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			app.setSize(1280, 720);
 			app.setTitle("REALM OF THE MAD TOM");
 			app.setResizable(false);
 			app.setVisible(true);
-			MainWindows app2 = new MainWindows(observable2,player2);
+			app2 = new MainWindows(observable2,player2);
 			app2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			app2.setSize(1280, 720);
 			app2.setTitle("REALM OF THE MAD TOM2");
@@ -147,6 +147,16 @@ public class TheGame {
 		}
 	}
 	
-
+	public static MainWindows GetWindows(Player player)
+	{
+		if(player.equals(player2))
+		{
+			return app2;
+		}
+		else
+		{
+			return app;
+		}
+	}
 
 }
