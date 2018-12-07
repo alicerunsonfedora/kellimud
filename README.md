@@ -8,6 +8,12 @@ _Background by Dennis van Zuijlekom. Edited._
 ## Project information
 For a detailed understanding of the project's objectives and basic gameplay, please consult the [spec writeup](SPEC.md).
 
+### Features
+- Loading and saving files via JSON (compatible with Termina)
+- Multiplayer with two windows
+- Background randomly selected
+- Easter eggs
+
 ## Compiling, running, and deployment
 ### Running in Eclipse
 1. Import the project into Eclipse using the Project Import Wizard.
@@ -15,7 +21,7 @@ For a detailed understanding of the project's objectives and basic gameplay, ple
 
 #### Adding to your build path
 ##### IntelliJ:
-1. Right-click on the library JAR file in `libraries` and select 'Open Library Settings...'.
+1. Right-click on the library JAR file in `lib` and select 'Open Library Settings...'.
 2. In the Export pane, check the box next to the library JAR file.
 
 ##### Eclipse:
