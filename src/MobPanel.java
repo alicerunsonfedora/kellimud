@@ -5,10 +5,13 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import java.util.Observer;
 import java.util.Observable;
+import mdlaf.*;                        // Using Material Design components
+import mdlaf.animation.MaterialUIMovement;
+import mdlaf.utils.MaterialColors;     // Using Material Design colors
 
 public class MobPanel extends JPanel implements Observer {
 
-	private int CurrentHealth, MaxHealth;
+	private int CurrentHealth, MaxHealth, CurrentLevel;
 	private JLabel health = new JLabel("Mob Health " + Integer.toString(CurrentHealth) + "/" + Integer.toString(MaxHealth));
 	private MudDataModel model;
 
@@ -22,6 +25,13 @@ public class MobPanel extends JPanel implements Observer {
 	{
 		this.model = model;
 		leaveIcon = new ImageIcon("src/res/exit.png");
+
+        try {
+            UIManager.setLookAndFeel (new MaterialLookAndFeel ());
+        }
+        catch (UnsupportedLookAndFeelException e) {
+            e.printStackTrace ();
+        }
 
     	super.setLayout(new GridBagLayout());
         viewConstraints = new GridBagConstraints();
@@ -40,7 +50,8 @@ public class MobPanel extends JPanel implements Observer {
 
         health.setMinimumSize(new Dimension(64,32));
         health.setForeground(Color.white);
-        health.setFont(new Font("Helvetica Neue",Font.PLAIN,25));
+        Font font = health.getFont();
+        health.setFont(font.deriveFont(Font.PLAIN, 24f));
         super.add(health,viewConstraints);
 
         leaveButton = new JButton("");
@@ -54,6 +65,8 @@ public class MobPanel extends JPanel implements Observer {
         leaveButton.setMinimumSize(new Dimension(64,32));
         leaveButton.setMaximumSize(new Dimension(64,32));
         leaveButton.setPreferredSize(new Dimension(64,32));
+        leaveButton.setBackground(MaterialColors.CYAN_500);
+        MaterialUIMovement.add(leaveButton, MaterialColors.GRAY_200);
 
 
         viewConstraints.gridy = 1;
@@ -68,8 +81,10 @@ public class MobPanel extends JPanel implements Observer {
     {
     	CurrentHealth = model.getMobHealth();
     	MaxHealth = model.getMobLevel()*10;
+    	CurrentLevel = model.getMobLevel();
     	if (model.getThisDungeon().room().MobAlive()) {
-            health.setText("Mob Health " + Integer.toString(CurrentHealth) + "/" + Integer.toString(MaxHealth));
+    	    health.setForeground(MaterialColors.BLUE_500);
+            health.setText(Integer.toString(CurrentHealth) + "/" + Integer.toString(MaxHealth) + " (Level " + Integer.toString(CurrentLevel) + ")");
         } else {
             health.setText("No mob present");
         }
