@@ -7,10 +7,12 @@ A Java-based MUD. What more do you want?
 For a detailed understanding of the project's objectives and basic gameplay, please consult the [spec writeup](SPEC.md).
 
 ### Features
-- Loading and saving files via JSON (compatible with Termina)
+- Loading and saving files via JSON (compatible with Termina*)
 - Multiplayer with two windows
 - Background randomly selected
 - Easter eggs
+
+> \* Conversion of fields to strings may be necessary before continuing.
 
 ## Compiling, running, and deployment
 ### Running in Eclipse
