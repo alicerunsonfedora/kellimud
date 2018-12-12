@@ -1,15 +1,17 @@
-import org.omg.CORBA.Current;
-
 import java.awt.*;
 import javax.swing.*;
 import java.util.Observable;
 import java.util.Observer;
 import java.awt.event.*;
+import mdlaf.*;                        // Using Material Design components
+import mdlaf.utils.MaterialColors;     // Using Material Design colors
+import mdlaf.animation.MaterialUIMovement;
 
 public class PlayerPanel extends JPanel implements Observer {
 
     private int CurrentHealth = 42;
-    private JLabel health = new JLabel("Your Health " + Integer.toString(CurrentHealth) + "/42");
+    private int CurrentLevel = 1;
+    private JLabel health = new JLabel(Integer.toString(CurrentHealth) + "/42");
     private JButton attackButton;
     private JButton healButton;
     private JButton equipButton;
@@ -27,6 +29,13 @@ public class PlayerPanel extends JPanel implements Observer {
         attackIcon = new ImageIcon("src/res/sword.png");
         healIcon = new ImageIcon("src/res/health.png");
         equipIcon = new ImageIcon("src/res/inventory.png");
+
+        try {
+            UIManager.setLookAndFeel (new MaterialLookAndFeel ());
+        }
+        catch (UnsupportedLookAndFeelException e) {
+            e.printStackTrace ();
+        }
 
     	super.setLayout(new GridBagLayout());
         viewConstraints = new GridBagConstraints();
@@ -47,6 +56,8 @@ public class PlayerPanel extends JPanel implements Observer {
         attackButton.setPreferredSize(new Dimension(48,48));
         attackButton.setMinimumSize(new Dimension(48,48));
         attackButton.setIcon(attackIcon);
+        attackButton.setBackground(MaterialColors.RED_500);
+        MaterialUIMovement.add (attackButton, MaterialColors.GRAY_200);
 
         super.add(attackButton,gc);
         attackButton.addActionListener(new ActionListener() {
@@ -61,6 +72,8 @@ public class PlayerPanel extends JPanel implements Observer {
         healButton.setPreferredSize(new Dimension(48,48));
         healButton.setMinimumSize(new Dimension(48,48));
         healButton.setIcon(healIcon);
+        healButton.setBackground(MaterialColors.AMBER_500);
+        MaterialUIMovement.add (healButton, MaterialColors.GRAY_200);
 
         gc.gridx = 1;
         healButton.addActionListener(new ActionListener() {
@@ -76,6 +89,8 @@ public class PlayerPanel extends JPanel implements Observer {
         equipButton.setToolTipText("Equip");
         equipButton.setPreferredSize(new Dimension(48,48));
         equipButton.setMinimumSize(new Dimension(48,48));
+        equipButton.setBackground(MaterialColors.AMBER_500);
+        MaterialUIMovement.add (equipButton, MaterialColors.GRAY_200);
         gc.gridx = 2;
 
         equipButton.setIcon(equipIcon);
@@ -130,12 +145,15 @@ public class PlayerPanel extends JPanel implements Observer {
     public void paintComponent(Graphics g)
     {
     	CurrentHealth = model.getPlayerHealth();
+    	CurrentLevel = model.getPlayerLevel();
     	if (CurrentHealth <= 10) {
-    	    health.setForeground(Color.red);
+    	    health.setForeground(MaterialColors.RED_500);
+        } else if (CurrentHealth >= 10 && CurrentHealth <= 39) {
+            health.setForeground(MaterialColors.YELLOW_500);
         } else {
-    	    health.setForeground(Color.white);
+    	    health.setForeground(MaterialColors.GREEN_500);
         }
-        health.setText("Your Health " + Integer.toString(CurrentHealth) + "/42");
+        health.setText(Integer.toString(CurrentHealth) + "/42" + " (Level " + Integer.toString(CurrentLevel) + ")");
         super.paintComponent(g);
     }
     

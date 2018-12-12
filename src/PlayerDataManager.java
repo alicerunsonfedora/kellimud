@@ -33,8 +33,6 @@ public class PlayerDataManager {
             player.setExperience(playerLongExp.intValue());
             player.setHealth((int) playerLongHealth);
 
-            System.out.println(player);
-
         } catch (Exception e){
             e.printStackTrace();
         }

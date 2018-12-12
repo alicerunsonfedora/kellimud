@@ -1,9 +1,8 @@
 import java.awt.*;
 import java.util.Observable;
 import java.util.Observer;
-import java.util.Random;
-
 import javax.swing.*;
+import mdlaf.*;                        // Using Material Design components
 
 public class MainContent extends JPanel implements Observer {
 
@@ -12,6 +11,13 @@ public class MainContent extends JPanel implements Observer {
 	public MainContent(MudDataModel model,Player player)
 	{
 		changeBackground(1);
+
+		try {
+			UIManager.setLookAndFeel (new MaterialLookAndFeel ());
+		}
+		catch (UnsupportedLookAndFeelException e) {
+			e.printStackTrace ();
+		}
 
 		this.setLayout(new BorderLayout());
 		thisModel = model;

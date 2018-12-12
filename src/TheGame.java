@@ -1,11 +1,12 @@
 import java.util.Scanner;
-
 import javax.swing.*;
-
 import java.io.Console;
 import static java.lang.System.out;
-
 import java.awt.BorderLayout;
+import mdlaf.*;                        // Using Material Design components
+import mdlaf.utils.MaterialColors;     // Using Material Design colors
+import mdlaf.animation.MaterialUIMovement;
+
 public class TheGame {
 	public TheGame() {
 	
@@ -72,6 +73,14 @@ public class TheGame {
 			app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			app2 = new MainWindows(observable2,player2);
 			app2.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+
+			try {
+				UIManager.setLookAndFeel (new MaterialLookAndFeel ());
+			}
+			catch (UnsupportedLookAndFeelException e) {
+				e.printStackTrace ();
+			}
+
 		}
 
 		Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
