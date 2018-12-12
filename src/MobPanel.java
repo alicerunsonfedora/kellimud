@@ -40,7 +40,8 @@ public class MobPanel extends JPanel implements Observer {
 
         health.setMinimumSize(new Dimension(64,32));
         health.setForeground(Color.white);
-        health.setFont(new Font("Helvetica Neue",Font.PLAIN,25));
+        Font font = health.getFont();
+        health.setFont(font.deriveFont(Font.PLAIN, 24f));
         super.add(health,viewConstraints);
 
         leaveButton = new JButton("");
@@ -69,6 +70,7 @@ public class MobPanel extends JPanel implements Observer {
     	CurrentHealth = model.getMobHealth();
     	MaxHealth = model.getMobLevel()*10;
     	if (model.getThisDungeon().room().MobAlive()) {
+    	    health.setForeground(Color.orange);
             health.setText("Mob Health " + Integer.toString(CurrentHealth) + "/" + Integer.toString(MaxHealth));
         } else {
             health.setText("No mob present");

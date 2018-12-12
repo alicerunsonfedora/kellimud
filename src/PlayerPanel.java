@@ -91,7 +91,8 @@ public class PlayerPanel extends JPanel implements Observer {
         gc.insets = new Insets(16, 16, 6, 6);
         health.setMinimumSize(new Dimension(130,30));
         health.setForeground(Color.white);
-        health.setFont(new Font("Helvetica Neue",Font.PLAIN,25));
+        Font font = health.getFont();
+        health.setFont(font.deriveFont(Font.PLAIN, 24f));
 
         health.addMouseListener(new MouseListener() {
             @Override

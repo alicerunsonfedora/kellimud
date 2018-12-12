@@ -3,8 +3,6 @@ A Java-based MUD. What more do you want?
 
 ![GUI](gui.png)
 
-_Background by Dennis van Zuijlekom. Edited._
-
 ## Project information
 For a detailed understanding of the project's objectives and basic gameplay, please consult the [spec writeup](SPEC.md).
 
