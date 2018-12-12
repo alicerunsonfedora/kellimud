@@ -4,6 +4,11 @@
     <root id="archive" name="Realm Of The Mad Tom.jar">
       <element id="module-output" name="Realm Of The Mad Tom" />
       <element id="extracted-dir" path="$PROJECT_DIR$/lib/json-simple-1.1.1.jar" path-in-jar="/" />
+      <element id="directory" name="src">
+        <element id="directory" name="res">
+          <element id="dir-copy" path="$PROJECT_DIR$/src/res" />
+        </element>
+      </element>
     </root>
   </artifact>
 </component>

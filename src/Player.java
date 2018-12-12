@@ -143,7 +143,6 @@ public class Player {
 		if(!dungeon.room().MobAlive())
 		{
 				dungeon.move(this);
-				JOptionPane.showMessageDialog(null, "Moved to new room successfully!", "New Room", JOptionPane.INFORMATION_MESSAGE);
 				return true;
 		}
 		else

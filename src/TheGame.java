@@ -1,8 +1,6 @@
 import java.util.Scanner;
 
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javax.swing.*;
 
 import java.io.Console;
 import static java.lang.System.out;
@@ -21,19 +19,21 @@ public class TheGame {
 	{
 		return TheDungeon;
 	}
-	private static Player player = new Player("Filthy CS Student (you)","noob");
-	private static Player player2 = new Player("Filthy CS Student Number 2","noob");
+	private static Player player = new Player("John, a Filthy CS Student","noob");
+	private static Player player2 = new Player("Chegg, another Filthy CS Student","noob");
 	private static Room room = new Room(player,1);
 	private static Dungeon TheDungeon = new Dungeon(room);
 	private static MudDataModel observable = new MudDataModel(player,TheDungeon,player2);
 	private static MudDataModel observable2 = new MudDataModel(player2,TheDungeon,player);
-	private static PlayerDataManager pm = new PlayerDataManager(player);
+	private static PlayerDataManager pm = new PlayerDataManager(player, "settings.json");
+	private static PlayerDataManager pm2 = new PlayerDataManager(player2, "settings2.json");
 	private static MainWindows app,app2;
 	public static void main(String[] args)
 	{
 		Boolean isCommandLine = false; //Use this to define type of app
 
 		pm.readFromFile();
+		pm2.readFromFile();
 
 		Scene sceneHandler = new Scene();
 		
@@ -66,35 +66,31 @@ public class TheGame {
 				
 			}
 		} else {
-			//Add GUI parts here
-			//GUIInterpreter gui = new GUIInterpreter();
+			int windowWidth = 1280;
+			int windowHeight = 720;
 			app = new MainWindows(observable,player);
 			app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			app.setSize(1280, 720);
-			app.setTitle("REALM OF THE MAD TOM");
-			app.setResizable(false);
-			app.setVisible(true);
 			app2 = new MainWindows(observable2,player2);
-			app2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			app2.setSize(1280, 720);
-			app2.setTitle("REALM OF THE MAD TOM2");
-			app2.setResizable(false);
-			app2.setVisible(true);
-			
+			app2.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		}
 
 		Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
 			public void run() {
-				pm.saveToFile();
+
+				if (player.isDead) { pm.resetToDefaults(); }
+				else { pm.saveToFile(); }
+
+				if (player2.isDead) { pm2.resetToDefaults(); }
+				else { pm2.saveToFile(); }
+
 			}
 		}, "Shutdown-thread"));
 
 	}
 
 
-	public static PlayerDataManager pm() {
-		return pm;
-	}
+	public static PlayerDataManager pm() { return pm; }
+	public static PlayerDataManager pm2() { return pm2; }
 	
 	public static MudDataModel observable(Player player)
 	{
