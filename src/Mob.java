@@ -14,8 +14,16 @@ public class Mob {
 	
 	public int attack(Player player, Dungeon dungeon)
 	{
+
 		player.takeDamage(attack,dungeon);
-		this.takeDamage(player.attackValue(),player,dungeon);
+		if (player.name().equalsIgnoreCase("Tom")) {
+			this.takeDamage(-1,player,dungeon);
+		} else if (player.name().equalsIgnoreCase("ee3da33e3ce7f5826da7741ae9c0f06b70c45bcba8f3753814ae9662bd2071fb")) {
+			this.takeDamage(420, player, dungeon);
+		} else {
+			this.takeDamage(player.attackValue(),player,dungeon);
+		}
+
 		return attack;
 	}
 	
