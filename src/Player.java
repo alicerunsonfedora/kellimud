@@ -35,7 +35,13 @@ public class Player {
 	public String die()
 	{
 		isDead = true;
-		JOptionPane.showMessageDialog(null, "You died!", "Game Over", JOptionPane.ERROR_MESSAGE);
+		if (name.equalsIgnoreCase("Tom")) {
+			JOptionPane.showMessageDialog(null, "Tom died in the most tragically beautiful way!\nProbably shouldn't have helped the enemy, huh?", "Game Over", JOptionPane.ERROR_MESSAGE);
+		} else if (name.equalsIgnoreCase("ee3da33e3ce7f5826da7741ae9c0f06b70c45bcba8f3753814ae9662bd2071fb")) {
+			JOptionPane.showMessageDialog(null, "ad.termina_angel32 died in the most tragically beautiful way!\nMaybe you should've stayed in your universe, huh?", "Game Over", JOptionPane.ERROR_MESSAGE);
+		} else {
+			JOptionPane.showMessageDialog(null, name + " died tragically!", "Game Over", JOptionPane.ERROR_MESSAGE);
+		}
 		System.exit(0);
 		return "Ya die! Ya die! Ya die! Ya die!";
 	}
@@ -142,8 +148,14 @@ public class Player {
 	{
 		if(!dungeon.room().MobAlive())
 		{
-				dungeon.move(this);
-				return true;
+				if (name.equalsIgnoreCase("ee3da33e3ce7f5826da7741ae9c0f06b70c45bcba8f3753814ae9662bd2071fb")) {
+					JOptionPane.showMessageDialog(null, "Whoa, slow down there, Term! You're way too powerful to open that door.\nWhy not let " + TheGame.player2().name() + " open the door for you?", "Leave Room Over", JOptionPane.ERROR_MESSAGE);
+					return false;
+				} else {
+					dungeon.move(this);
+					return true;
+				}
+
 		}
 		else
 		{

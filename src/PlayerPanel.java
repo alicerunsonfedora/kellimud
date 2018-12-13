@@ -39,8 +39,14 @@ public class PlayerPanel extends JPanel implements Observer {
 
     	super.setLayout(new GridBagLayout());
         viewConstraints = new GridBagConstraints();
-    	// Normally, we'd set text here, but we're using an icon.
-        attackButton = new JButton("");
+
+        if (player.name().equalsIgnoreCase("Tom")) {
+            attackButton = new JButton("TOM");
+        } else {
+            attackButton = new JButton("");
+            attackButton.setIcon(attackIcon);
+        }
+
         viewConstraints.gridwidth= GridBagConstraints.REMAINDER;
         viewConstraints.fill= viewConstraints.HORIZONTAL;
         GridBagConstraints gc= new GridBagConstraints();
@@ -53,9 +59,8 @@ public class PlayerPanel extends JPanel implements Observer {
         gc.gridy = 1;
 
         attackButton.setToolTipText("Attack");
-        attackButton.setPreferredSize(new Dimension(48,48));
+        //attackButton.setPreferredSize(new Dimension(48,48));
         attackButton.setMinimumSize(new Dimension(48,48));
-        attackButton.setIcon(attackIcon);
         attackButton.setBackground(MaterialColors.RED_500);
         MaterialUIMovement.add (attackButton, MaterialColors.GRAY_200);
 
@@ -66,12 +71,18 @@ public class PlayerPanel extends JPanel implements Observer {
                TheGame.observable(player).attack();
             }
          });
-        // Normally, we'd set text, but the icon replaces this.
-        healButton = new JButton("");
+
+        if (player.name().equalsIgnoreCase("Tom")) {
+            healButton = new JButton("TOM");
+        } else {
+            healButton = new JButton("");
+            healButton.setIcon(healIcon);
+        }
+
         healButton.setToolTipText("Heal");
-        healButton.setPreferredSize(new Dimension(48,48));
+        //healButton.setPreferredSize(new Dimension(48,48));
         healButton.setMinimumSize(new Dimension(48,48));
-        healButton.setIcon(healIcon);
+
         healButton.setBackground(MaterialColors.AMBER_500);
         MaterialUIMovement.add (healButton, MaterialColors.GRAY_200);
 
@@ -84,16 +95,21 @@ public class PlayerPanel extends JPanel implements Observer {
          });
         super.add(healButton,gc);
 
-        // We'd normally set text, but we have an icon instead
-        equipButton = new JButton("");
+        if (player.name().equalsIgnoreCase("Tom")) {
+            equipButton = new JButton("TOM");
+        } else {
+            equipButton = new JButton("");
+            equipButton.setIcon(equipIcon);
+        }
+
         equipButton.setToolTipText("Equip");
-        equipButton.setPreferredSize(new Dimension(48,48));
+        //equipButton.setPreferredSize(new Dimension(48,48));
         equipButton.setMinimumSize(new Dimension(48,48));
         equipButton.setBackground(MaterialColors.AMBER_500);
         MaterialUIMovement.add (equipButton, MaterialColors.GRAY_200);
         gc.gridx = 2;
 
-        equipButton.setIcon(equipIcon);
+
 
         super.add(equipButton, gc);
         equipButton.addActionListener(new ActionListener() {
@@ -153,7 +169,12 @@ public class PlayerPanel extends JPanel implements Observer {
         } else {
     	    health.setForeground(MaterialColors.GREEN_500);
         }
-        health.setText(Integer.toString(CurrentHealth) + "/42" + " (Level " + Integer.toString(CurrentLevel) + ")");
+    	if (attackButton.getText().equalsIgnoreCase("TOM")) {
+            health.setText(Integer.toString(CurrentHealth) + "/42" + " (Level TOM)");
+        } else {
+            health.setText(Integer.toString(CurrentHealth) + "/42" + " (Level " + Integer.toString(CurrentLevel) + ")");
+        }
+
         super.paintComponent(g);
     }
     

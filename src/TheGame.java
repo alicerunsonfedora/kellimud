@@ -15,6 +15,7 @@ public class TheGame {
 	{
 		return player;
 	}
+	public static Player player2() { return player2; }
 	
 	public static Dungeon dungeon()
 	{
